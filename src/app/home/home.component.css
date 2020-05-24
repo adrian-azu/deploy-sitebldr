@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@900&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.desktop .logo{
+    width: 80px;
+    height: 60px;
+    padding: 5px;
+    margin-left: 8%;
+    transition: 0.6s;
+    position: relative;
+}
+
+.desktop{
+    top:0px;
+    width:100vw;
+    padding:3.7% 0;
+    position: fixed;
+    align-items:center;
+    display:grid;
+    grid-template-columns:2fr 3fr;
+    z-index: 1000;
+    transition: 0.6s;
+}
+
+.desktop ul{
+    display:flex;
+    align-items: center;
+    list-style:none;
+    width:93%;
+}
+
+.desktop ul li{
+    width:20%;
+    margin:2% 0;
+    text-align:center;
+    position: relative;
+}
+
+.desktop ul li a{
+    font-weight: 300;
+    transition: 0.3s;
+    text-decoration: none;
+    color:#FFF;
+}
+
+/* transition effect */
+nav.sticky{
+    padding: 0px;
+    background: #000;
+}
+
+nav.sticky .logo,
+nav.sticky ul li a{
+    color: #fff;
+}
+
+nav .logo{
+    position: relative;
+    height: auto;
+    transition: 0.6s;
+}
+
+nav ul li{
+    position: relative;
+    list-style: none;
+}
+
+nav ul li a{
+    position: relative;
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 300;
+    transition: 0.3s;
+}
+
+.adjuster{
+    height:1000px;
+    background-color: pink;
+}
+
+/*Mobile View Configuration
+Do not touch.*/
+.mobile{
+    top:0px;
+    width:100%;
+    background-color: #000;
+    position: fixed;
+    align-items:center;
+    display:grid;
+    grid-template-columns:2fr 3fr;
+    z-index: 1000;
+    transition: 0.6s;
+    align-items: center;
+    text-align: center;
+}
+.mobile ul li{
+    position: relative;
+    text-align: center;
+    padding:10px;
+}
+.mobilelogo{
+    width:60px;
+    margin:auto;
+    padding:10px;
+}
+.mobile{
+    display:none;
+}
+/*Mobile View Configuration
+Do not touch.*/
+
+/* Section Contents */
+.banner{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner video{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.banner .content{
+    z-index: 1;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+.banner .content h1{
+    margin: 0;
+    padding: 0;
+    font-size: 3.7em;
+    color: #fff;
+}
+
+.banner .content p{
+    padding: 20px;
+    letter-spacing: 3px;
+    font-size: 25px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.content h1 span{
+    color: #4978ff
+}
+
+/*Large Devices 992-1199*/
+@media screen and (max-width:1199px){
+    .header{
+        grid-template-columns: 1fr 3fr;
+    }
+}
+
+/*Large Devices and Medium 768-1024*/
+@media screen and (max-width:1024px){
+    .desktop{
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .banner .content h1{
+        font-size: 3em;
+        color: #fff;
+    }
+
+    .banner .content p{
+        padding: 20px;
+        letter-spacing: 3px;
+        font-size: 25px;
+        font-weight: lighter;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+    @media screen and (max-width:880px){
+            .banner .content h1{
+            font-size: 2.3em;
+        }
+        .banner .content p{
+            padding: 15px;
+            letter-spacing: 2px;
+            font-size: 20px;
+        }
+    }
+}
+
+/*Below 768px
+Medium Devices 576-767*/
+@media screen and (max-width:767px){
+    .desktop, .desktop .sticky{
+        display:none;
+    }
+
+    .mobile{
+        display: block;
+        background-color: #000000;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hamburger-btn{
+        positon:relative;
+    }
+
+    .hamburger-btn .fa-bars,
+    .hamburger-btn .fa-times{
+        top:15px;
+        right:20px;
+        color:#fff;
+        font-size:30px;
+        position:fixed;
+        cursor:pointer;
+    }
+
+    .mobile ul{
+    display:none;
+    }
+
+    .mobile ul.active{
+        display:block;
+    }
+
+    .banner .content h1{
+        font-size: 2em;
+    }
+    
+    .banner .content p{
+        padding: 15px;
+        letter-spacing: 2px;
+        font-size: 20px;
+    }
+
+    /*Below 576px
+    Medium Devices 576*/
+    @media screen and (max-width:577px){
+        .banner .content h1{
+            font-size: 18px;
+        }
+        .banner .content p{
+            padding: 10px;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+    }
+}
