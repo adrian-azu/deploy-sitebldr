@@ -107,9 +107,10 @@ Do not touch.*/
     padding:10px;
 }
 .mobilelogo{
-    width:60px;
+    width:70px;
+    height:60px;
     margin:auto;
-    padding:10px;
+    padding:12px;
 }
 .mobile{
     display:none;
