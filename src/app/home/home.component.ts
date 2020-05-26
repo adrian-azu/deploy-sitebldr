@@ -27,17 +27,17 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit(): void {
     $(document).ready(function(){
-        $(".hamburger-btn .fa-times").hide();
+        $(".hamburger-btn .fas-times").hide();
 
-        $(".hamburger-btn .fa-bars").click(function(){
+        $(".hamburger-btn .fas-bars").click(function(){
           $(this).hide();
-          $(".hamburger-btn .fa-times").show();
+          $(".hamburger-btn .fas-times").show();
           $(".mobile ul").addClass("active");
         });
 
-        $(".hamburger-btn .fa-times").click(function(){
+        $(".hamburger-btn .fas-times").click(function(){
           $(this).hide();
-          $(".hamburger-btn .fa-bars").show();
+          $(".hamburger-btn .fas-bars").show();
           $(".mobile ul").removeClass("active");
         });
     });
