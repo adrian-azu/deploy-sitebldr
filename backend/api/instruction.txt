@@ -1,0 +1,20 @@
+Serving the PHP REST API Project
+-Click the config on apache tabs and select the Apache(httpd.config)
+-Find: DocumentRoot "C:/Users/azuce/Documents/eceas-project/backend"->change this path to your project folder path, same with the <Directory "path" > then save.
+
+-Then start the apache server and mysql
+
+-browse localhost to your browser and you should see the folder "api" or the two php files to try if the server is running perfectly 
+
+Creating the MySQL Database
+
+-Click Admin button on mysql tab of xampp
+-It will redirect you to phpmyadmin
+-Create a new database by clicking the "new" in left tab
+-Name your database 'eceasdb' then click go/create
+-select the database you created then on your top tab, click the import and upload the .sql database
+-Click go
+
+To try if your created database is working, browse the localhost then click the "database.php" file. If there's no error, it means your database is now working.
+
+header(Access-Control-Allow-Origin http://localhost:4200)
