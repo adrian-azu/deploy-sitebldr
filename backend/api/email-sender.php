@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 ini_set("display_errors",1);
 
-function sendmail($code, $email, $firstname, $lastname, $company, $country, $password){
+function sendmail($code, $email, $firstname, $lastname){
   $mail = new PHPMailer();
   $Email='fourfivesix4561@gmail.com';
 
@@ -39,24 +39,11 @@ function sendmail($code, $email, $firstname, $lastname, $company, $country, $pas
       if($mail->send()){
         echo 'Message has been sent';
 
-        echo json_encode(array(
-          'status'=> 1,
-          'message' => 'Code confirmation sent!',
-          'firstName' => $firstname,
-          'lastName' => $lastname,
-          'company' => $company,
-          'country' => $country,
-          'email' => $email
-        ));
-        return http_response_code(200);
+        return true;
 
       }else{
 
-            echo json_encode(array(
-            "status" =>0,
-            "message" => "Invalid Email"
-          ));
-            return http_response_code(500);
+          return false;
       }
   } catch (Exception $e) {
       echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

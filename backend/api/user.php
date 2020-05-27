@@ -71,7 +71,7 @@ ini_set('display_errors', 1);
       $position=strpos($generated_id,".")+1;
       $uid=substr($generated_id,$position);
       $code=$uid;
-    }while (check_id($uid));
+    }while ($this->check_id($uid));
   }
 
   function check_id($id){
