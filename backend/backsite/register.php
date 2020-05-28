@@ -1,8 +1,8 @@
 <?php
 
-include_once("database.php");
-include_once("user.php");
-include_once('email-sender.php');
+include_once("../api/database.php");
+include_once("../api/user.php");
+include_once('../api/email-sender.php');
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);

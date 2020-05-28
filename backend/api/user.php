@@ -15,6 +15,7 @@ ini_set('display_errors', 1);
      public $role;
      public $password;
 
+
      public $conn;
      private $table_name;
 
@@ -47,6 +48,21 @@ ini_set('display_errors', 1);
         return false;
     }
   }
+  function verify_login(){
+    $sql="SELECT * from user_info WHERE email=?";
+
+    $stmt = $this->conn->prepare($sql);
+
+    //$this->email=htmlspecialchars(strip_tags($this->email));
+    $stmt->bind_param("s", $this->email);
+    if($stmt->execute()){
+      $data = $stmt->get_result();
+      return $data->fetch_assoc();
+      $stmt->fetch();
+    }
+    return array();
+  }
+
   function verify_email(){
     $sql= "SELECT email FROM user_info WHERE email=?";
     $stmt=$this->conn->prepare($sql);
