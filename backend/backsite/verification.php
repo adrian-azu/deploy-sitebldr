@@ -20,7 +20,7 @@ include_once("../api/database.php");
 
      if(isset($postdata) && !empty($postdata)){
 
-       $request=json_decode($postdata);
+      $request=json_decode($postdata);
       $user->uid= $user->conn->real_escape_string(trim($request->Uid));
       $user->firstname= $user->conn->real_escape_string(trim($request->firstName));
       $user->lastname= $user->conn->real_escape_string(trim($request->lastName));
