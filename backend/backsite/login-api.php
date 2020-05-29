@@ -33,13 +33,14 @@ use \Firebase\JWT\JWT;
             'email'=>$user->email,
             'id'=>$user_data['user_id'],
             'firstName' => $user_data['first_name'],
+            'role' => $user_data['role'],
             'lastName' => $user_data['last_name']
           );
           $payload = array(
             "iss" =>"webfunnel.com",
             "iat" =>time(),
             "nbf" =>time()+10,
-            "exp" =>time()+30,
+            "exp" =>time()+60,
             "aud" =>$user_data['role'],
             "data"=>$response
           );
@@ -47,7 +48,6 @@ use \Firebase\JWT\JWT;
           $jwt=JWT::encode($payload,$secret_key);
           echo json_encode(array("status"=>1,
             "message"=>"Logged in successfully",
-            'role' => $user_data['role'],
             "jwt" => $jwt
           ));
           http_response_code(200);
