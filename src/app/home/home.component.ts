@@ -23,21 +23,19 @@ export class HomeComponent implements OnInit {
         return true;
     }
 
-
-
   public ngOnInit(): void {
     $(document).ready(function(){
-        $(".hamburger-btn .fas-times").hide();
+        $(".hamburger-btn .fa-times").hide();
 
-        $(".hamburger-btn .fas-bars").click(function(){
+        $(".hamburger-btn .fa-bars").click(function(){
           $(this).hide();
-          $(".hamburger-btn .fas-times").show();
+          $(".hamburger-btn .fa-times").show();
           $(".mobile ul").addClass("active");
         });
 
-        $(".hamburger-btn .fas-times").click(function(){
+        $(".hamburger-btn .fa-times").click(function(){
           $(this).hide();
-          $(".hamburger-btn .fas-bars").show();
+          $(".hamburger-btn .fa-bars").show();
           $(".mobile ul").removeClass("active");
         });
     });

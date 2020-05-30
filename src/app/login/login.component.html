@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="container">
+    <form [formGroup] = "loginform" (ngSubmit) = "onSubmit(logindetails.value)" #logindetails="ngForm">
+        <div class="greetings">
+            <h2> Welcome! </h2>
+        </div>
+
+        <div>
+            <input type = "email" id = "email" 
+            placeholder = "E-mail Address"
+            ng-model = "email"
+            formControlName = "email"
+            required>
+            <div *ngIf = "submitted && loginform.controls.email.errors" class = "alert-danger">
+                <div *ngIf = "loginform.controls.email.errors.required">Your email is required</div>
+            </div> 
+        </div>
+
+        <div>
+            <input type = "password" id = "password"
+            placeholder = "Password"
+            ng-model = "passWord"
+            formControlName = "passWord"
+            required>
+            <div *ngIf = "submitted && loginform.controls.passWord.errors" class = "alert-danger">
+                <div *ngIf = "loginform.controls.passWord.errors.required">Your password is required</div>
+            </div> 
+        </div>
+
+
+        <div class = "bottom">
+            <div>
+                <label class = "login-bottom">
+                <input type = "checkbox" > Remember me?</label>
+            </div>
+            <div>
+                <a class = "login-bottom" href="#">Forgot Password?</a>
+            </div>
+        </div>
+        
+        <div>
+            <input type="submit" class="signinbtn" value="Sign In">
+        </div>
+
+
+    </form>
+</div>

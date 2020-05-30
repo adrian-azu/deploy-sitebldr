@@ -1,0 +1,66 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+.container{
+    margin: auto;
+    width:100%;
+    height:100vh;
+    justify-self: center;
+    text-align: center;
+}
+
+form{
+    width: 40%;
+    height: 50%;
+    margin: 8% auto;
+    text-align: center;
+    box-shadow: 10px #000000;
+    border: 1px solid #cccccc;
+}
+
+.greetings{
+    margin: 8% auto 10%;
+}
+
+
+#email, #password{
+    width: 50%;
+    margin: 10px;
+    padding: 3px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.bottom{
+    margin:5px;
+}
+
+.signinbtn{
+    margin: 10px;
+    width: 45%;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color : #ffffff;
+    box-shadow: 0 6px #999;
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6, #00F260); 
+    background: linear-gradient(to right, #0575E6, #00F260);
+}
+
+.signinbtn:active {
+    border:none;
+    outline:none;
+    background-color: #251aff;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
+
+
