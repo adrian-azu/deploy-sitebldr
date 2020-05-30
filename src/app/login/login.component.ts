@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
   success = false;
   invalidLogin = false;
   
-
-
   constructor(private formBuilder: FormBuilder,
     private authservice: AuthenticationService,
     private router: Router,
@@ -31,32 +29,33 @@ export class LoginComponent implements OnInit {
     });
   }
 
-    onSubmit(logindetails) {
-      this.submitted = true;
+  onSubmit(logindetails) {
+    this.submitted = true;
+    
+    if (this.loginform.invalid){
+      return;
+    }
 
-      if (this.loginform.invalid){
-        return;
-      }
-
-      this.success = true;
-      this.authservice.signIn(logindetails)
-        .subscribe(result =>{
-          if(result){
-            this.invalidLogin = false;
-            console.log("routing...");
-          }
-          else
-            //this.invalidLogin = true;
-            console.log("ekis");
-          
-        },
-        error =>{
+    this.success = true;
+    this.authservice.signIn(logindetails)
+      .subscribe(result =>{
+        if(result){
+          this.invalidLogin = false;
+          console.log("routing...");
+        }
+        else
+         //this.invalidLogin = true;
+          console.log("ekis");
+      },
+      error =>{
           console.log("error");
-        })
+      })
     }
     
   
-
+    backbtnClicked(){
+      console.log("back button is clicked!");
+    }
 
 
 }

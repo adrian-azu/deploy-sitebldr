@@ -1,46 +1,75 @@
-<div class="container">
-    <form [formGroup] = "loginform" (ngSubmit) = "onSubmit(logindetails.value)" #logindetails="ngForm">
-        <div class="greetings">
-            <h2> Welcome! </h2>
+<div class="container-fluid">
+    <div class = "container-design">
+        <div  class = "backbtn">
+            <button (click) = "backbtnClicked()" id = "chevron">
+                <i class = "fas fa-chevron-left"  ></i>
+            </button>
         </div>
-
-        <div>
-            <input type = "email" id = "email" 
-            placeholder = "E-mail Address"
-            ng-model = "email"
-            formControlName = "email"
-            required>
-            <div *ngIf = "submitted && loginform.controls.email.errors" class = "alert-danger">
-                <div *ngIf = "loginform.controls.email.errors.required">Your email is required</div>
-            </div> 
+        <div class = "logindivision">
+            <img src="assets\Images\login_pressplay.png" id = "pressplay">
         </div>
-
-        <div>
-            <input type = "password" id = "password"
-            placeholder = "Password"
-            ng-model = "passWord"
-            formControlName = "passWord"
-            required>
-            <div *ngIf = "submitted && loginform.controls.passWord.errors" class = "alert-danger">
-                <div *ngIf = "loginform.controls.passWord.errors.required">Your password is required</div>
-            </div> 
-        </div>
-
-
-        <div class = "bottom">
-            <div>
-                <label class = "login-bottom">
-                <input type = "checkbox" > Remember me?</label>
+    </div>
+    <div class = "container-form">
+        <form [formGroup] = "loginform" (ngSubmit) = "onSubmit(logindetails.value)" #logindetails="ngForm">
+            <div class = "greetings">
+                <div class = "greetings-top">
+                    <h2> - Welcome to - </h2>
+                </div>
+                <div class = "greetings-bottom">
+                    <img src="assets/Images/SBBB.png" alt="" id = "SBBB">
+                </div>
             </div>
-            <div>
-                <a class = "login-bottom" href="#">Forgot Password?</a>
+
+            <div *ngIf = "submitted && invalidLogin"  class = "alert-danger">  
+                Your username or password is invalid.
             </div>
-        </div>
-        
-        <div>
-            <input type="submit" class="signinbtn" value="Sign In">
-        </div>
+
+            <div>
+                <input type = "email" id = "email" 
+                placeholder = "E-mail Address"
+                ng-model = "email"
+                formControlName = "email"
+                required>
+                <div *ngIf = "submitted && loginform.controls.email.errors" class = "alert-danger">
+                    <div *ngIf = "loginform.controls.email.errors.required">Your email is required</div>
+                </div> 
+            </div>
+
+            <div>
+                <input type = "password" id = "password"
+                placeholder = "Password"
+                ng-model = "passWord"
+                formControlName = "passWord"
+                required>
+                <div *ngIf = "submitted && loginform.controls.passWord.errors" class = "alert-danger">
+                    <div *ngIf = "loginform.controls.passWord.errors.required">Your password is required</div>
+                </div> 
+            </div>
 
 
-    </form>
+            <div class = "bottom">
+                <div>
+                    <label class = "rememberme">
+                    <input type = "checkbox" > Remember me?</label>
+                </div>
+                <div>
+                    <a class = "forgotpass" href="#"> Forgot Password?</a>
+                </div>
+            </div>
+            
+            <div>
+                <input type="submit" class="signinbtn" value="Log in">
+            </div>
+
+            <div>
+                <a href="#" class = "register">Not a member? Register here.</a>
+            </div>
+
+        </form>
+    </div>
+
 </div>
+<footer>
+    <label> &copy; 2020 SiteBldr </label>
+</footer>
+
