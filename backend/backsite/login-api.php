@@ -24,6 +24,7 @@ use \Firebase\JWT\JWT;
       $user->email=$user->conn->real_escape_string(trim($request->email));
 
       $user_data = $user->verify_login();
+
       if(!empty($user_data) and isset($user_data)){
         $user->password=$user->conn->real_escape_string(trim($request->passWord));
         $hashed_password= $user_data['password'];
@@ -31,15 +32,15 @@ use \Firebase\JWT\JWT;
           $response = array(
             'email'=>$user->email,
             'id'=>$user_data['user_id'],
-            'roles' => $user_data['role'],
             'firstName' => $user_data['first_name'],
+            'role' => $user_data['role'],
             'lastName' => $user_data['last_name']
           );
           $payload = array(
             "iss" =>"webfunnel.com",
             "iat" =>time(),
             "nbf" =>time()+10,
-            "exp" =>time()+30,
+            "exp" =>time()+60,
             "aud" =>$user_data['role'],
             "data"=>$response
           );
