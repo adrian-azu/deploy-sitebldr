@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-clientaccount',
+  selector: 'client',
   templateUrl: './clientaccount.component.html',
   styleUrls: ['./clientaccount.component.css']
 })

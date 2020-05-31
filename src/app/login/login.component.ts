@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private authservice: AuthenticationService,
     private router: Router,
-    private route: ActivatedRoute
-    ) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loginform = this.formBuilder.group({
@@ -57,15 +56,31 @@ export class LoginComponent implements OnInit {
     this.authservice.signIn(logindetails)
       .subscribe(result =>{
         if(result){
+          var currentRole = this.authservice.currentRoleGetter();
+
           this.invalidLogin = false;
-          console.log("routing...");
-        }
+          console.log(currentRole);
+          if(currentRole !== null){
+            console.log("gumagana");
+            this.router.navigateByUrl('/'+currentRole);
+          }
+          else{
+            this.router.navigateByUrl('/');
+          }
+
+
+
+        }  
         else
          //this.invalidLogin = true;
           console.log("ekis");
       },
       error =>{
-          console.log("error");
+          console.log(error);
+          
+          if(error.status === 500){
+            this.invalidLogin = true;
+          }
       })
     }
     

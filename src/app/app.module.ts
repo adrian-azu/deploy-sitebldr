@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ClientaccountComponent } from './clientaccount/clientaccount.component';
+import { AdminaccountComponent } from './adminaccount/adminaccount.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ClientaccountComponent
+    ClientaccountComponent,
+    AdminaccountComponent
   ],
   imports: [
     BrowserModule,
