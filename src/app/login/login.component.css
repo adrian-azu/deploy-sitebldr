@@ -25,30 +25,26 @@ body{
 }
 
 .logindivision{
-    border: 1px solid lightgoldenrodyellow;
     justify-content: center;
     text-align: center;
 }
 
 #pressplay{
     width: 85%;
-    border:1px solid cadetblue;
 }
 
 .container-design{
     height: 100vh;
     background-color: #e5e5e5;
-    border: 1px solid lightcoral;
 }
 
 .container-form{
     width: 100%;
-    border: 1px solid lightblue;
 }
 
 form{
     width: 80%;
-    height: 82.75%;
+    height: 82%;
     margin: auto;
     text-align: center;
 }
@@ -63,7 +59,6 @@ form{
 
 #SBBB{
     height: 40px;
-    width: 40%;
     margin-bottom:20px;
 }
 
@@ -71,13 +66,31 @@ form{
 #email, #password{
     width: 55%;
     margin: 7px;
-    padding: 5px 25px;
+    padding: 5px 28px;
     color:#333333;
     letter-spacing: 0.5px;
     background-color: #ededed;
     border: 2px solid #e5e5e5;
     border-radius: 15px;
 }
+
+#password{
+    margin-left: -13px;
+}
+.password-div{
+    display:float;
+}
+
+.notslashed, .slasheye{
+    margin-left: -40px;
+    position: relative;
+    z-index: 2;
+}
+.slasheye{
+    font-size: 14px;
+}
+
+
 
 #email{
     margin-top:20px;
@@ -86,7 +99,7 @@ form{
 .bottom{
     margin:0;
     padding:0;
-    width: 55%;
+    width: 53%;
     font-size: 14px;
     text-align: center;
     margin: 5px auto;
@@ -112,7 +125,7 @@ form{
     color: #FFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background-color: #00B0EA;
-    margin: 50px auto 0;
+    margin: 25px auto 3px;
     width: 32%;
 }
 
@@ -130,10 +143,28 @@ form{
     border-radius:5px;
 }
 
+
+
 footer{
-    text-align: center;
     width: 50%;
     margin-left:50%;
     font-size: small;
-    border:1px solid black;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 1999px){
+
+    #email, #password{
+        font-size:15px;
+        width: 65%;
+    }
+    .bottom{
+        width: 65%;
+    }
+    @media screen and (max-width:1024px){
+        #email, #password, .bottom{
+            width: 70%;
+        }
+    }
 }

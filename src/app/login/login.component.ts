@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControlName } from '@angular/fo
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../auth/authentication.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'login',
@@ -27,6 +28,22 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       passWord: ['', Validators.required]
     });
+
+    $(document).ready(function(){
+      $(".slasheye").hide();
+    
+    $(".notslashed").click(function(){
+      $(this).hide();
+      $(".slasheye").show();
+      $('#password').attr("type", "text");
+    });
+
+    $(".slasheye").click(function(){
+      $(this).hide();
+      $(".notslashed").show();
+      $('#password').attr("type", "password");
+    });
+  });
   }
 
   onSubmit(logindetails) {
@@ -56,6 +73,10 @@ export class LoginComponent implements OnInit {
     backbtnClicked(){
       console.log("back button is clicked!");
     }
+
+
+
+    
 
 
 }

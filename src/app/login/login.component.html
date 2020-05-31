@@ -35,12 +35,20 @@
                 </div> 
             </div>
 
-            <div>
+            <div class = "password_div">
                 <input type = "password" id = "password"
                 placeholder = "Password"
                 ng-model = "passWord"
                 formControlName = "passWord"
                 required>
+                
+                <span class = "notslashed">
+                    <i class="far fa-eye "></i>
+                </span>
+                <span class = "slasheye">
+                    <i class="far fa-eye-slash"></i>
+                </span>
+                
                 <div *ngIf = "submitted && loginform.controls.passWord.errors" class = "alert-danger">
                     <div *ngIf = "loginform.controls.passWord.errors.required">Your password is required</div>
                 </div> 
