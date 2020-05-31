@@ -40,6 +40,7 @@
                 placeholder = "Password"
                 ng-model = "passWord"
                 formControlName = "passWord"
+                maxlength = 16
                 required>
                 
                 <span class = "notslashed">
@@ -48,7 +49,7 @@
                 <span class = "slasheye">
                     <i class="far fa-eye-slash"></i>
                 </span>
-                
+
                 <div *ngIf = "submitted && loginform.controls.passWord.errors" class = "alert-danger">
                     <div *ngIf = "loginform.controls.passWord.errors.required">Your password is required</div>
                 </div> 
@@ -70,7 +71,7 @@
             </div>
 
             <div>
-                <a href="#" class = "register">Not a member? Register here.</a>
+                <a href="#" class = "register">not a member? register here</a>
             </div>
 
         </form>
