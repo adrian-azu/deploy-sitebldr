@@ -10,8 +10,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { ClientaccountComponent } from './clientaccount/clientaccount.component';
-import { AdminaccountComponent } from './adminaccount/adminaccount.component';
+import { ClientaccountComponent } from './client/clientaccount/clientaccount.component';
+import { AdminaccountComponent } from './admin/adminaccount/adminaccount.component';
+import { ProjectmanageraccountComponent } from './projectmanager/projectmanageraccount/projectmanageraccount.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AdminaccountComponent } from './adminaccount/adminaccount.component';
     HomeComponent,
     LoginComponent,
     ClientaccountComponent,
-    AdminaccountComponent
+    AdminaccountComponent,
+    ProjectmanageraccountComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import * as jwt_decode from 'jwt-decode';
 
@@ -10,7 +11,8 @@ export class AuthenticationService {
 
   private authServer = "http://localhost:8080/backsite/login-api.php"
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private router: Router) { }
 
   signIn(logindetails){
     return this.http.post<any>(this.authServer, logindetails).pipe(
@@ -24,6 +26,17 @@ export class AuthenticationService {
           return false;
       })
     )
+  }
+
+
+  isAuthenticated(){
+    const token = localStorage.getItem('token');
+    if(token === null){
+      this.router.navigateByUrl('/login');
+      return false;
+    }
+    else
+      return true;
   }
 
   currentRoleGetter(){

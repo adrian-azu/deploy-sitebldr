@@ -61,19 +61,14 @@ export class LoginComponent implements OnInit {
           this.invalidLogin = false;
           console.log(currentRole);
           if(currentRole !== null){
-            console.log("gumagana");
             this.router.navigateByUrl('/'+currentRole);
           }
           else{
             this.router.navigateByUrl('/');
           }
-
-
-
         }  
         else
-         //this.invalidLogin = true;
-          console.log("ekis");
+          this.invalidLogin = true;
       },
       error =>{
           console.log(error);
@@ -86,7 +81,7 @@ export class LoginComponent implements OnInit {
     
   
     backbtnClicked(){
-      console.log("back button is clicked!");
+      this.router.navigateByUrl('/');
     }
 
 
