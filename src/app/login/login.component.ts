@@ -29,20 +29,29 @@ export class LoginComponent implements OnInit {
     });
 
     $(document).ready(function(){
-      $(".slasheye").hide();
-    
-    $(".notslashed").click(function(){
-      $(this).hide();
-      $(".slasheye").show();
-      $('#password').attr("type", "text");
+        $(".slasheye").hide();
+      
+      $(".notslashed").click(function(){
+        $(this).hide();
+        $(".slasheye").show();
+        $('#password').attr("type", "text");
+      });
+
+      $(".slasheye").click(function(){
+        $(this).hide();
+        $(".notslashed").show();
+        $('#password').attr("type", "password");
+      });
     });
 
-    $(".slasheye").click(function(){
-      $(this).hide();
-      $(".notslashed").show();
-      $('#password').attr("type", "password");
-    });
-  });
+    // redirect to home if already logged in
+    if(this.authservice.currentRoleGetter()){
+      console.log(this.authservice.currentRoleGetter());
+      const currentRole = this.authservice.currentRoleGetter();
+      this.router.navigateByUrl('/' + currentRole);
+    }
+    else
+      this.router.navigateByUrl('/login')
   }
 
   onSubmit(logindetails) {

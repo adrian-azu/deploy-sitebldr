@@ -15,7 +15,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient,
     private router: Router) {
-      this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('token')));
+      this.currentUserSubject = new BehaviorSubject<any>(localStorage.getItem('token'));
       this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -30,8 +30,7 @@ export class AuthenticationService {
           console.log(data);
           localStorage.setItem('token', data.jwt);
           this.currentUserSubject.next(data);
-          console.log(this.currentUserSubject.value);
-          console.log(this.currentUser);
+          console.log(this.currentUserSubject);
           return true;
         }
         else
@@ -50,7 +49,7 @@ export class AuthenticationService {
       return true;
   }
 
-  currentRoleGetter(){
+  public currentRoleGetter(){
     const token = localStorage.getItem('token');
     
     if(token){
@@ -67,6 +66,7 @@ export class AuthenticationService {
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
   }
+
 
 
   
