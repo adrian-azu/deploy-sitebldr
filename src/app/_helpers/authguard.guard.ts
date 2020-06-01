@@ -14,17 +14,21 @@ export class AuthguardGuard implements CanActivate {
   
     const expectedRole = route.data.expectedRole;
     const token = localStorage.getItem('token');
-    const decodedToken = jwt_decode(token);
-    const tokenPayload = decodedToken['data'];
     
-    if(this.auth.isAuthenticated() === true){
+    
+    if(token){
+      const decodedToken = jwt_decode(token);
+      const tokenPayload = decodedToken['data'];
       if(tokenPayload.role === expectedRole){
         return true;
       }
       else{
-        this.router.navigateByUrl('/'+ tokenPayload.role);
+        this.router.navigateByUrl('/' + tokenPayload.role)
         return false;
       }
     }
+    else
+      this.router.navigateByUrl('/login');
+
   }
 }

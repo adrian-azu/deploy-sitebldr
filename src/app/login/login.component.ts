@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/' + currentRole);
     }
     else
-      this.router.navigateByUrl('/login')
+      this.router.navigateByUrl('/login');
   }
 
   onSubmit(logindetails) {
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
           this.invalidLogin = false;
           console.log(currentRole);
           if(currentRole !== null){
-            this.router.navigateByUrl('/'+currentRole);
+            this.router.navigateByUrl('/'+ currentRole);
           }
           else{
             this.router.navigateByUrl('/');

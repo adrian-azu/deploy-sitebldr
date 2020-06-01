@@ -11,7 +11,7 @@ export class AuthenticationService {
 
   private authServer = "http://localhost:8080/backsite/login-api.php"
   private currentUserSubject: BehaviorSubject<any>;
-  private currentUser: Observable<any>;
+  public currentUser: Observable<any>;
 
   constructor(private http: HttpClient,
     private router: Router) {
@@ -41,12 +41,13 @@ export class AuthenticationService {
 
   isAuthenticated(){
     const token = localStorage.getItem('token');
-    if(token === null){
-      this.router.navigateByUrl('/login');
-      return false;
+    if(token){
+      console.log(token);
+      return true;
     }
     else
-      return true;
+      this.router.navigateByUrl('/login');
+      return false;
   }
 
   public currentRoleGetter(){
@@ -59,12 +60,14 @@ export class AuthenticationService {
       return tokenPayload.role
     }
     else
+    console.log(token);
       return null;
   }
 
   signOut(){
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
+    this.router.navigateByUrl('/login');
   }
 
 
