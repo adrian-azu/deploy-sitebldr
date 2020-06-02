@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+
 import { ClientaccountComponent } from './client/clientaccount/clientaccount.component';
 import { AdminaccountComponent } from './admin/adminaccount/adminaccount.component';
 import { ProjectmanageraccountComponent } from './projectmanager/projectmanageraccount/projectmanageraccount.component';
@@ -40,6 +42,10 @@ const routes: Routes = [
     data : {
       expectedRole: 'ProjectManager'
     }
+  },
+  {
+    path: 'Registration',
+    component: RegistrationComponent
   },
   { path: '**', redirectTo: ''}      
 ];

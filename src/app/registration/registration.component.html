@@ -1,1 +1,67 @@
-<p>registration works!</p>
+<div class="container-fluid">
+    <div class = "container-design">
+        <div  class = "backbtn">
+            <button (click) = "backbtnClicked()" id = "chevron">
+                <i class = "fas fa-chevron-left"  ></i>
+            </button>
+        </div>
+        <div class = "regidivision">
+            <img src="assets\Images\registration_img.png" id = "reg_img">
+        </div>
+    </div>
+
+    <div class="container-form">
+        <form [formGroup] = "regiform">
+            <div class = "greetings">
+                <h3>Some spiel to be added.</h3>
+            </div>
+
+            <div class = "visitor_info">
+                <label for = "firstName" > First Name </label>
+                <input type = "text" name = "firstName">
+            </div>
+            <div class = "visitor_info">
+                <label for = "lastName" > Last Name </label>
+                <input type = "text" name = "lastName">
+            </div>
+            <div class = "visitor_info">
+                <label for = "companyName"> Company Name </label>
+                <input type = "text" name = "companyName">
+            </div>
+            <div class = "visitor_info">
+                <label for = "country"> Country </label>
+                <input type = "text" name = "country" >
+            </div>
+
+            <div class = "logincredentials">
+                <label for = "email" id = "lblEmail"> Email Address </label>
+                <input type = "email" name = "email" id = "email">
+            </div>
+
+            <div class = "logincredentials">
+                <label for = "password"> Password </label>
+                <input type = "password" name = "password">
+            </div>
+            <div class = "logincredentials">
+                <label for = "confirmpass"> Confirm Passsword </label>
+                <input type = "password" name = "confirmpass">
+            </div>
+
+            <div class ="terms">
+                <label>By creating an account, you agree to our
+                    <a href="#">Terms</a> and that you have read our
+                    <a href="#">Data Use Policy.</a> 
+                </label>
+            </div>
+
+            <div class = "registerbtn">
+                <input type = "submit" value = "Register" id = "registerbutton">
+            </div>
+        </form>
+    </div>
+
+    
+</div>
+<footer>
+    <label> &copy; 2020 SiteBldr </label>
+</footer>
