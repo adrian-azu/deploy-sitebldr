@@ -1,50 +1,95 @@
-<div class="container-fluid">
+<div class = "container-fluid">
     <div class = "container-design">
         <div  class = "backbtn">
             <button (click) = "backbtnClicked()" id = "chevron">
                 <i class = "fas fa-chevron-left"  ></i>
             </button>
         </div>
+
         <div class = "regidivision">
             <img src="assets\Images\registration_img.png" id = "reg_img">
         </div>
     </div>
 
     <div class="container-form">
-        <form [formGroup] = "regiform">
+        <form [formGroup] = "regiform" (ngSubmit) = "onSubmit(accountdetails.value)" #accountdetails="ngForm" >
             <div class = "greetings">
-                <h3>Some spiel to be added.</h3>
+                <h4>Create My Account</h4>
             </div>
 
             <div class = "visitor_info">
-                <label for = "firstName" > First Name </label>
-                <input type = "text" name = "firstName">
+                <label for = "firstName"> First Name </label>
+                
+                <input type = "text" name = "firstName"
+                formControlName = "firstName">
             </div>
+
+
             <div class = "visitor_info">
-                <label for = "lastName" > Last Name </label>
-                <input type = "text" name = "lastName">
+                <label for = "lastName"> Last Name </label>
+                
+                <input type = "text" name = "lastName"
+                formControlName = "lastName">
             </div>
+
+
             <div class = "visitor_info">
                 <label for = "companyName"> Company Name </label>
-                <input type = "text" name = "companyName">
+            
+                <input type = "text" name = "companyName"
+                formControlName = "companyName">
             </div>
+
+
             <div class = "visitor_info">
-                <label for = "country"> Country </label>
-                <input type = "text" name = "country" >
+                <ng-template #rt let-r="result" let-t="term">
+                    <img [src]="'assets/Country Flags/' + r['flag']" class="mr-1" style="width: 15px">
+                    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+                </ng-template>
+                
+
+                <label for="typeahead-template">Country</label>
+                
+                <input type = "text" id = "typeahead-template" 
+                name = "country" placeholder = "Search for your country"
+                [ngbTypeahead]="search" [inputFormatter]="formatter" 
+                [resultTemplate]="rt" formControlName="bansa">
+                
             </div>
+
 
             <div class = "logincredentials">
                 <label for = "email" id = "lblEmail"> Email Address </label>
-                <input type = "email" name = "email" id = "email">
+                <input type = "email" name = "email" id = "email" formControlName = "email" >
             </div>
 
             <div class = "logincredentials">
                 <label for = "password"> Password </label>
-                <input type = "password" name = "password">
+                <div class="forToggle">
+                    
+                    <input type = "password" id = "password" formControlName = "password">
+                    <span class = "notslashed-p">
+                        <i class="far fa-eye "></i>
+                    </span>
+                    <span class = "slasheye-p">
+                        <i class="far fa-eye-slash"></i>
+                    </span>
+                </div>
             </div>
+
             <div class = "logincredentials">
                 <label for = "confirmpass"> Confirm Passsword </label>
-                <input type = "password" name = "confirmpass">
+                
+                <div class="forToggle">
+                    <input type = "password" id = "confirmpass" formControlName = "confirmpass">
+                    
+                    <span class = "notslashed-cp">
+                        <i class="far fa-eye "></i>
+                    </span>
+                    <span class = "slasheye-cp">
+                        <i class="far fa-eye-slash"></i>
+                    </span> 
+                </div>
             </div>
 
             <div class ="terms">
@@ -53,15 +98,14 @@
                     <a href="#">Data Use Policy.</a> 
                 </label>
             </div>
-
+            
             <div class = "registerbtn">
                 <input type = "submit" value = "Register" id = "registerbutton">
             </div>
+
+            <div class = "member">
+                <a routerLink = "/login"> or login to my account </a>
+            </div>
         </form>
     </div>
-
-    
 </div>
-<footer>
-    <label> &copy; 2020 SiteBldr </label>
-</footer>
