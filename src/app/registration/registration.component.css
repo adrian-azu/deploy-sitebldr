@@ -98,6 +98,10 @@ form{
     padding: 2px 5px 2px 10px;
 }
 
+#passwordcredential{
+    margin-bottom:0;
+}
+
 #email, #lblEmail{
     margin-top: 20px;
 }
@@ -107,7 +111,20 @@ form{
 }
 
 .forToggle input{
-    margin-left:13px;
+    margin-left:12px;
+}
+
+.passwordStrength{
+    width:80%;
+    padding:0;
+    margin:0 auto;
+    margin-bottom:1.75%;
+}
+
+#passbar{
+    margin:0px;
+    padding:0px;
+    text-align:right;
 }
 
 .notslashed-p, .slasheye-p,

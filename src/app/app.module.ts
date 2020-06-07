@@ -15,6 +15,7 @@ import { ClientaccountComponent } from './client/clientaccount/clientaccount.com
 import { AdminaccountComponent } from './admin/adminaccount/adminaccount.component';
 import { ProjectmanageraccountComponent } from './projectmanager/projectmanageraccount/projectmanageraccount.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { PasswordstrengthComponent } from './registration/passwordstrength/passwordstrength.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegistrationComponent } from './registration/registration.component';
     ClientaccountComponent,
     AdminaccountComponent,
     ProjectmanageraccountComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PasswordstrengthComponent
   ],
   imports: [
     BrowserModule,
