@@ -16,17 +16,22 @@ export class PasswordstrengthComponent implements OnChanges {
   bar2: string;  
   bar3: string;  
   bar4: string;  
-  level:string
-  private colors = ['#F00', '#F90', '#FF0', '#9F0', '#0F0'];
+  level:string;
+  showlvlColor:string;
+
+  //private colors = ['#F00', '#F90', '#FF0', '#9F0', '#0F0'];
+  private colors = ['#F00', '#cc2900', '#ffcc00', '#2eb82e', '#009933'];
 
   
   checkStrength(){
-    let fairlvl = /^(?=.*?[a-z])(?=.*?[0-9]){8,16}/;
-    let goodlvl = /^(?=.*?[A-Z][a-z])(?=.*?[0-9]){8,16}/;
-    let stronglvl = /^(?=.*?[#?!@$%^&*-])(?=.*?[A-Z][a-z])(?=.*?[0-9]){8,16}/;
+    let fairlvl = /^(?=.*?[a-z])(?=.*?[0-9]).{8,16}$/;
+    let goodlvl = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,16}$/;
+    let stronglvl = /^(?=.*?[#?!@$%^&*-])(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,16}$/;
 
     let password = this.passwordToCheck;
-    console.log(password);
+    if(password === null){
+      return;
+    }
     if(stronglvl.test(password)===true){
       return this.level = "strong";
     }
@@ -46,7 +51,6 @@ export class PasswordstrengthComponent implements OnChanges {
   
   getColor(){
     this.level = this.checkStrength();
-    console.log(this.level);
     let idx = 0;
     if(this.level === "strong"){
       idx = 4; 
@@ -65,13 +69,31 @@ export class PasswordstrengthComponent implements OnChanges {
       col: this.colors[idx]
     }; 
   }
+
+  showlvl=false;
+  showLevel(){
+    if (this.currentlvl !== null){
+      this.showlvl = true;
+    }
+    else
+    this.showlvl = false;
+  }
   
+
+  currentlvl;  
   ngOnChanges(changes: { [propName: string]: SimpleChange }): void{
     const password = changes.passwordToCheck.currentValue;
     this.setBarColors(4, '#DDD');
     if (password) {
+      this.showlvl = true;
+      this.currentlvl = this.checkStrength();
       const c = this.getColor();
       this.setBarColors(c.idx, c.col);
+      this.showlvlColor = c.col;
+    }
+    else{
+      this.showlvl = false;
+      this.currentlvl = null;
     }
   }
 
@@ -80,5 +102,4 @@ export class PasswordstrengthComponent implements OnChanges {
       this['bar' + n] = col;
     }
   }
-
 }

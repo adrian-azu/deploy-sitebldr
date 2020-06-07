@@ -60,10 +60,10 @@
 
             <div class = "logincredentials">
                 <label for = "email" id = "lblEmail"> Email Address </label>
-                <input type = "email" name = "email" id = "email" formControlName = "email" >
+                <input type = "email" name = "email" id = "email" formControlName = "email">
             </div>
 
-            <div class = "logincredentials">
+            <div class = "logincredentials"id="passwordcredential">
                 <label for = "password"> Password </label>
                 <div class="forToggle">
                     
@@ -77,9 +77,9 @@
                 </div>
             </div>
 
-            <div class = "passwordStrength">
-                <passwordstrength id="passbar" [passwordToCheck]="regiform.value.password"></passwordstrength>
-            </div>
+            
+            <passwordstrength id="passbar" [passwordToCheck]="regiform.value.password"></passwordstrength>
+            
 
             <div class = "logincredentials">
                 <label for = "confirmpass"> Confirm Passsword </label>

@@ -17,7 +17,6 @@ import * as $ from 'jquery';
 export class RegistrationComponent implements OnInit {
   regiform: FormGroup;
   country = countryData;
-  
   constructor(private formBuilder: FormBuilder,
   private router: Router) {}
 
@@ -83,7 +82,6 @@ export class RegistrationComponent implements OnInit {
   onSubmit(accountdetails) {
     console.log(this.regiform.value);
     console.log(this.passwordchecker());
-    console.log(this.passwordStrengthChecker());
   }
 
   backbtnClicked(){
@@ -101,33 +99,5 @@ export class RegistrationComponent implements OnInit {
 
   formatter = (x: {name: string}) => x.name;
 
-  level:any;
-  passwordStrengthChecker(){
-    let fairlvl = /^(?=.*?[a-z])(?=.*?[0-9]){8,16}/;
-    let goodlvl = /^(?=.*?[A-Z][a-z])(?=.*?[0-9]){8,16}/;
-    let stronglvl = /^(?=.*?[#?!@$%^&*-])(?=.*?[A-Z][a-z])(?=.*?[0-9]){8,16}/;
-
-    let password = this.regiform.get('password').value;
-    
-    if(stronglvl.test(password)===true){
-      return this.level = "strong";
-    }
-
-    else if(goodlvl.test(password)===true){
-      return this.level = "good"
-    }
-
-    else if(fairlvl.test(password) === true){
-      return this.level="fair";
-    }
-
-    else{
-      return this.level="weak";
-    }
-  }
-
-
-
   
-
 }

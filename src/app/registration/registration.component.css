@@ -58,8 +58,8 @@ body{
 
 form{
     width: 75%;
-    height: 80%;
-    margin: 9% auto;
+    height: 100%;
+    margin: auto;
 }
 
 .greetings{
@@ -114,17 +114,13 @@ form{
     margin-left:12px;
 }
 
-.passwordStrength{
-    width:80%;
-    padding:0;
-    margin:0 auto;
-    margin-bottom:1.75%;
-}
-
 #passbar{
     margin:0px;
     padding:0px;
     text-align:right;
+    z-index:-1;
+    position: relative;
+    top:-8px;
 }
 
 .notslashed-p, .slasheye-p,
