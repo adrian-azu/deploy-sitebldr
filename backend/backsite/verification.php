@@ -21,7 +21,6 @@ include_once("../api/database.php");
      if(isset($postdata) && !empty($postdata)){
 
       $request=json_decode($postdata);
-      $user->uid= $user->conn->real_escape_string(trim($request->Uid));
       $user->firstname= $user->conn->real_escape_string(trim($request->firstName));
       $user->lastname= $user->conn->real_escape_string(trim($request->lastName));
       $user->company= $user->conn->real_escape_string(trim($request->company));
@@ -38,6 +37,7 @@ include_once("../api/database.php");
          }
          $_SESSION['uid']=$user->uid;
          return http_response_code(200);
+         unset($postdata);
        }else{
          echo json_encode(array(
          "status" =>0,
