@@ -25,11 +25,12 @@ body{
     height:10%;
     margin:auto;
 }
+
 #chevron{
     border:none;
     padding: 2px 5px;
     cursor: pointer;
-    margin:2.25% 3%;
+    margin:2.25% 2%;
     position:relative;
     background-color: #e5e5e5;
 }
@@ -40,6 +41,7 @@ body{
     text-align: center;
     position: relative;
 }
+
 #reg_img{
     width:65%;
     margin:17.5% auto;
@@ -54,17 +56,19 @@ body{
 /* right side */
 .container-form{
     height:100%;
+    border:1px solid pink;
 }
 
 form{
     width: 75%;
-    height: 100%;
+    height: 95%;
+    border:1px solid cyan;
     margin: auto;
 }
 
 .greetings{
     text-align:center;
-    margin: 5% auto 7%;
+    margin: 12% auto 4%;
     text-transform:uppercase;
 }
 
@@ -73,6 +77,9 @@ form{
     font-weight:lighter;
 }
 
+#FNdiv{
+    margin-top: 2%;
+}
 .visitor_info, .logincredentials{
     display:grid;
     grid-template-columns: 1.5fr 2fr;
@@ -84,7 +91,6 @@ form{
     margin-left:5%;
     font-size:14px;
     font-weight:400;
-
 }
 
 .visitor_info input, .logincredentials input{ 
@@ -98,12 +104,24 @@ form{
     padding: 2px 5px 2px 10px;
 }
 
-#passwordcredential{
+#passbar{
+    margin:0 0 2px;
+    padding:0;
+    text-align:right;
+    position: relative;
+    top:-18px;
+    z-index: -1;
+}
+
+#confirmpassdivision{
+    position:relative;
+    top:-16px;
     margin-bottom:0;
+    padding:0;
 }
 
 #email, #lblEmail{
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .forToggle{
@@ -112,15 +130,6 @@ form{
 
 .forToggle input{
     margin-left:12px;
-}
-
-#passbar{
-    margin:0px;
-    padding:0px;
-    text-align:right;
-    z-index:-1;
-    position: relative;
-    top:-8px;
 }
 
 .notslashed-p, .slasheye-p,
@@ -133,7 +142,7 @@ form{
 
 .terms{
     font-size: 11px;
-    margin: 5px auto 0;
+    margin: 2px auto 0;
     padding-top:5px;
     border-top: 1px solid #e2e2e2;
     width: 76%;
@@ -143,7 +152,7 @@ form{
 }
 
 .registerbtn{
-    margin: 15px auto 3px;
+    margin: 12px auto 3px;
     text-align:center;
 }
 
@@ -182,6 +191,30 @@ footer{
     border:1px solid black;
 }
 
+.formError{
+    position:relative;
+    top: -1.25%;
+    z-index: -1;
+    margin:0 auto;
+    width:75%;
+    padding:0;
+    text-align:right;
+    color:#ff0000;
+    font-size:11px;
+}
+
+#confirmpasserror{
+    position:relative;
+    top:-15px;
+}
+
+.alert-danger{
+    text-align:center;
+    width:77%;
+    border-radius:2px;
+    font-size:small;
+    margin: 0 auto 10px;
+}
 
 /* media queries */
 /* media queries */

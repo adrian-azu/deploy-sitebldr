@@ -2,7 +2,7 @@
     <div class = "container-design">
         <div  class = "backbtn">
             <button (click) = "backbtnClicked()" id = "chevron">
-                <i class = "fas fa-chevron-left"  ></i>
+                <i class = "fas fa-chevron-left"></i>
             </button>
         </div>
 
@@ -12,32 +12,57 @@
     </div>
 
     <div class="container-form">
-        <form [formGroup] = "regiform" (ngSubmit) = "onSubmit(accountdetails.value)" #accountdetails="ngForm" >
+        <form [formGroup] = "regiform" (ngSubmit) = "onSubmit(accountdetails.value)" #accountdetails = "ngForm">
             <div class = "greetings">
                 <h4>Create My Account</h4>
             </div>
 
-            <div class = "visitor_info">
+            <div *ngIf = "submitted && invalidform" class="alert-danger">
+                All fields are required.
+            </div>
+
+            <div class = "visitor_info" #FNdiv>
                 <label for = "firstName"> First Name </label>
                 
-                <input type = "text" name = "firstName"
-                formControlName = "firstName">
+                <input type = "text" 
+                name = "firstName" 
+                formControlName = "firstName"
+                maxlength = "30">
             </div>
 
+            <div *ngIf = "regiform.controls.firstName.errors?.pattern 
+                        && regiform.controls.firstName.touched" class="formError">
+                Please enter valid name.
+            </div>
 
             <div class = "visitor_info">
-                <label for = "lastName"> Last Name </label>
+                <label for = "lastName">
+                    Last Name
+                </label>
                 
-                <input type = "text" name = "lastName"
-                formControlName = "lastName">
+                <input type = "text" 
+                name = "lastName" 
+                formControlName = "lastName"
+                maxlength = "30">
             </div>
 
+            <div *ngIf = "regiform.controls.lastName.errors?.pattern" class="formError">
+                Please enter valid name.
+            </div>
 
             <div class = "visitor_info">
-                <label for = "companyName"> Company Name </label>
+                <label for = "companyName">
+                    Company Name
+                </label>
             
-                <input type = "text" name = "companyName"
-                formControlName = "companyName">
+                <input type = "text"
+                name = "companyName" 
+                formControlName = "companyName"
+                maxlength = "30">
+            </div>
+
+            <div *ngIf = "regiform.controls.companyName.errors?.pattern" class="formError">
+                Please enter valid name.
             </div>
 
 
@@ -47,27 +72,47 @@
                     <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
                 </ng-template>
                 
-
-                <label for="typeahead-template">Country</label>
+                <label for="typeahead-template">
+                    Country
+                </label>
                 
-                <input type = "text" id = "typeahead-template" 
-                name = "country" placeholder = "Search for your country"
-                [ngbTypeahead]="search" [inputFormatter]="formatter" 
-                [resultTemplate]="rt" formControlName="bansa">
-                
+                <input type = "text" 
+                name = "country"
+                id = "typeahead-template" 
+                maxlength = "50"
+                [ngbTypeahead] = "search"
+                [inputFormatter] = "formatter" 
+                [resultTemplate] = "rt"
+                formControlName ="country">
             </div>
-
-
+                
             <div class = "logincredentials">
-                <label for = "email" id = "lblEmail"> Email Address </label>
-                <input type = "email" name = "email" id = "email" formControlName = "email">
+                <label for = "email" id = "lblEmail">
+                    Email Address
+                </label>
+                
+                <input type = "email"
+                name = "email" id = "email"
+                formControlName = "email" 
+                maxlength = "50">
+            </div>
+            
+            <div *ngIf = "regiform.controls.email.touched && regiform.controls.email.errors?.email" class = "formError">
+                Please enter a valid email.
             </div>
 
-            <div class = "logincredentials"id="passwordcredential">
-                <label for = "password"> Password </label>
+            <div class = "logincredentials" id="passwordcredential">
+                <label for = "password">
+                    Password
+                </label>
+
                 <div class="forToggle">
+                
+                    <input type = "password" 
+                    formControlName = "password"
+                    id = "password" 
+                    maxlength = "16">
                     
-                    <input type = "password" id = "password" formControlName = "password">
                     <span class = "notslashed-p">
                         <i class="far fa-eye "></i>
                     </span>
@@ -76,16 +121,20 @@
                     </span>
                 </div>
             </div>
-
             
-            <passwordstrength id="passbar" [passwordToCheck]="regiform.value.password"></passwordstrength>
+            <passwordstrength id="passbar"
+            [passwordToCheck] = "regiform.value.password"></passwordstrength>
             
-
-            <div class = "logincredentials">
-                <label for = "confirmpass"> Confirm Passsword </label>
+            <div class = "logincredentials" id="confirmpassdivision">
+                <label for = "confirmpass">
+                    Confirm Passsword
+                </label>
                 
                 <div class="forToggle">
-                    <input type = "password" id = "confirmpass" formControlName = "confirmpass">
+                    <input type = "password" 
+                    id = "confirmpass"
+                    formControlName = "confirmpass"
+                    maxlength = "16">
                     
                     <span class = "notslashed-cp">
                         <i class="far fa-eye "></i>
@@ -96,6 +145,11 @@
                 </div>
             </div>
 
+            <div *ngIf = "!passwordchecker() && regiform.controls.confirmpass.touched" 
+                class = "formError" id="confirmpasserror">
+                Passwords must match.
+            </div>
+            
             <div class ="terms">
                 <label>By creating an account, you agree to our
                     <a href="#">Terms</a> and that you have read our
@@ -104,7 +158,7 @@
             </div>
             
             <div class = "registerbtn">
-                <input type = "submit" value = "Register" id = "registerbutton">
+                <input type = "submit" id = "registerbutton" value = "Register">
             </div>
 
             <div class = "member">

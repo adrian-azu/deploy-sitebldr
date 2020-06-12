@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, RequiredValidator } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import {Observable} from 'rxjs';
 import {debounceTime, map} from 'rxjs/operators';
-import { AbstractControl, ValidationErrors } from "@angular/forms"
 
 import { countryData } from './countryData';
 import * as $ from 'jquery';
@@ -16,22 +15,40 @@ import * as $ from 'jquery';
 })
 export class RegistrationComponent implements OnInit {
   regiform: FormGroup;
+  submitted = false;
   country = countryData;
+  invalidform;
+
   constructor(private formBuilder: FormBuilder,
-  private router: Router) {}
+  private router: Router,) {}
 
   ngOnInit(): void {
-    
     this.regiform = this.formBuilder.group({
-      firstName: [''],
-      lastName: [''],
-      companyName: [''],
-      bansa: [''],
-      email:[''],
-      password: [''],
-      confirmpass:['']
-    });
+      firstName: ['', 
+        [ Validators.required,
+          Validators.pattern('^[A-Za-z . \s_-]+$')]
+      ],
 
+      lastName: [
+        '', 
+        [ Validators.required, 
+          Validators.pattern('^[A-Za-z . \s_-]+$')]
+      ],
+
+      companyName: ['',
+        [ Validators.required,
+          Validators.pattern('^[A-Za-z0-9 \s ._&-]+$') ]
+      ],
+
+      country: ['', Validators.required],
+
+      email : ['',
+        [ Validators.required,
+          Validators.email ]
+      ],
+      password: ['', Validators.required],
+      confirmpass: ['', Validators.required]
+    });
   
     $(document).ready(function(){
       $(".slasheye-p").hide();
@@ -69,8 +86,6 @@ export class RegistrationComponent implements OnInit {
     let password = this.regiform.get('password').value;
     let cfpassword = this.regiform.get('confirmpass').value;
 
-    console.log(password);
-    console.log(cfpassword);
     if (password === cfpassword){
       return true;
     }
@@ -80,24 +95,58 @@ export class RegistrationComponent implements OnInit {
 
   
   onSubmit(accountdetails) {
-    console.log(this.regiform.value);
+    console.log(accountdetails);
+    
+    this.submitted = true;
+    
+    if(this.emptyFieldChecker() == true){
+      this.invalidform = true;
+    }
+    if (this.passwordchecker() == false){
+      console.log("password checker is false");
+      return;
+    }
+    if (this.regiform.invalid){
+      console.log("form is invalid");
+      return;
+    }
+    
     console.log(this.passwordchecker());
+    this.invalidform = false;
   }
 
   backbtnClicked(){
     this.router.navigateByUrl('/');
   }
 
-
-  public bansa: any;
   search = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(200),
       map(term => term === '' ? []
-        : this.country.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+        : countryData.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     )
 
   formatter = (x: {name: string}) => x.name;
 
-  
+  //for the meantime, cant access validators.required through regiform as whole
+  emptyFieldChecker(){
+    let fn = this.regiform.get('firstName').value;
+    let ln = this.regiform.get('lastName').value;
+    let cn = this.regiform.get('companyName').value;
+    let cntry = this.regiform.get('country').value;
+    let em = this.regiform.get('email').value;
+    let ps = this.regiform.get('password').value;
+    let cf = this.regiform.get('confirmpass').value;
+
+    if(fn === '' || ln === '' || cn === '' || cntry === '' || em === '' || ps === '' || ps === '' || cf === ''){
+      return true;
+    }
+    else
+      return false;
+  }
+
+
 }
+  
+  
+

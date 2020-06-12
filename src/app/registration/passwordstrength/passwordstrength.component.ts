@@ -1,15 +1,12 @@
-import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
-
+import { Component, Input, OnChanges, SimpleChange, OnInit } from '@angular/core';
 @Component({
   selector: 'passwordstrength',
   templateUrl: './passwordstrength.component.html',
   styleUrls: ['./passwordstrength.component.css']
 })
-export class PasswordstrengthComponent implements OnChanges {
+export class PasswordstrengthComponent implements OnInit, OnChanges {
 
-  constructor() { }
-
-  @Input() passwordToCheck: string;  
+  @Input() passwordToCheck: string;
   @Input() barLabel: string;
   bar0: string;  
   bar1: string;  
@@ -18,24 +15,28 @@ export class PasswordstrengthComponent implements OnChanges {
   bar4: string;  
   level:string;
   showlvlColor:string;
+  showlvl = false;
+  currentlvl;
 
-  //private colors = ['#F00', '#F90', '#FF0', '#9F0', '#0F0'];
   private colors = ['#F00', '#cc2900', '#ffcc00', '#2eb82e', '#009933'];
 
+  constructor() { }
+
+  ngOnInit(){
+    this.showLevel();
+    this.weakLvl();
+  }
   
   checkStrength(){
+    let weaklvl = /^(?=.*?[a-z])/;
     let fairlvl = /^(?=.*?[a-z])(?=.*?[0-9]).{8,16}$/;
     let goodlvl = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,16}$/;
     let stronglvl = /^(?=.*?[#?!@$%^&*-])(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,16}$/;
 
     let password = this.passwordToCheck;
-    if(password === null){
-      return;
-    }
     if(stronglvl.test(password)===true){
       return this.level = "strong";
     }
-
     else if(goodlvl.test(password)===true){
       return this.level = "good"
     }
@@ -43,12 +44,13 @@ export class PasswordstrengthComponent implements OnChanges {
     else if(fairlvl.test(password) === true){
       return this.level="fair";
     }
-
-    else{
+    else if(weaklvl.test(password) === true){
       return this.level="weak";
     }
+    else
+      return this.level = null;
   }
-  
+
   getColor(){
     this.level = this.checkStrength();
     let idx = 0;
@@ -70,18 +72,27 @@ export class PasswordstrengthComponent implements OnChanges {
     }; 
   }
 
-  showlvl=false;
   showLevel(){
+    let currentlvl = this.checkStrength();
     if (this.currentlvl !== null){
       this.showlvl = true;
     }
     else
     this.showlvl = false;
   }
-  
 
-  currentlvl;  
+  weakLvl(){
+    this.currentlvl = this.checkStrength();
+    if(this.currentlvl === "weak"){
+      return true;
+    }
+    else
+      return false;
+  }
+  
   ngOnChanges(changes: { [propName: string]: SimpleChange }): void{
+    this.weakLvl();
+    this.showLevel();
     const password = changes.passwordToCheck.currentValue;
     this.setBarColors(4, '#DDD');
     if (password) {
