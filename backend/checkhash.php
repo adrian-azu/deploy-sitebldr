@@ -14,15 +14,9 @@ echo $generated_id = hash('sha256', uniqid (rand (),true));
 echo "<br>";
 
 echo $uid=substr($generated_id,1);
-jumble($uid);
+$user_id=12;
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."confirm.php?id=" . $user_id;
+echo $actual_link;
 
-function jumble($uid){
-$i=6
-do {
-  // code...
-} while ($i==strlen($uid));
-  echo $postion;
-  echo $new_id;
-  echo sadasdas;
-}
+
 ?>

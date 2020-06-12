@@ -23,7 +23,7 @@ use \Firebase\JWT\JWT;
       $request=json_decode($postdata);
       $user->email=$user->conn->real_escape_string(trim($request->email));
 
-      $user_data = $user->verify_login();
+      $user_data = $user->get_user_data();
 
       if(!empty($user_data) and isset($user_data)){
         $user->password=$user->conn->real_escape_string(trim($request->passWord));
@@ -51,6 +51,7 @@ use \Firebase\JWT\JWT;
             "jwt" => $jwt
           ));
           http_response_code(200);
+          unset($postdata);
         }else{
           $response=array(
             'status'=>0,

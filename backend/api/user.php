@@ -14,6 +14,7 @@ ini_set('display_errors', 1);
      public $email;
      public $role;
      public $password;
+     public $code;
 
 
      public $conn;
@@ -37,7 +38,9 @@ ini_set('display_errors', 1);
     $this->role=htmlspecialchars(strip_tags($this->role));
     $this->password=htmlspecialchars(strip_tags($this->password));
 
+
     $this->password=password_hash($this->password, PASSWORD_DEFAULT);
+    $this->generate_id();
 
     $stmt->bind_param("ssssssss", $this->uid, $this->firstname,
     $this->lastname, $this->company, $this->country, $this->email, $this->role, $this->password);
@@ -48,8 +51,8 @@ ini_set('display_errors', 1);
         return false;
     }
   }
-  function verify_login(){
-    $sql="SELECT * from user_info WHERE email=?";
+  function get_user_data(){
+    $sql="SELECT * from user_info WHERE email=? LIMIT 1";
 
     $stmt = $this->conn->prepare($sql);
 
@@ -62,7 +65,6 @@ ini_set('display_errors', 1);
     }
     return array();
   }
-
   function verify_email(){
     $sql= "SELECT email FROM user_info WHERE email=?";
     $stmt=$this->conn->prepare($sql);
@@ -81,29 +83,17 @@ ini_set('display_errors', 1);
       echo $error;
     }
   }
-  function generate_id(){
-    do {
+  function generate_code(){
       $generated_id = uniqid (rand (),true);
       $position=strpos($generated_id,".")+1;
-      $uid=substr($generated_id,$position);
-      $code=$uid;
-    }while ($this->check_id($uid));
+      $this->code=substr($generated_id,$position);
   }
 
-  function check_id($id){
-    $sql= "SELECT user_id FROM user_info WHERE user_id=? ";
-    $stmt=$this->conn->prepare($sql);
-    $this->uid=htmlspecialchars(strip_tags($id));
-    $stmt->bind_param("s", $this->uid);
-    if ($stmt->execute()) {
-      $stmt->store_result();
-      if($stmt->num_rows >0){
-        return true;
-        $this->uid=$id;
-      }else{
-        return false;
-      }
-    }
+  function generate_id(){
+    $generated_id = uniqid (rand (),true);
+    $position=strpos($generated_id,".")+6;
+    $this->uid=substr($generated_id,$position);
+    $this->uid= "SBR".$this->uid. date("md");
   }
 }
 
