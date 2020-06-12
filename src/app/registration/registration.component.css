@@ -56,13 +56,12 @@ body{
 /* right side */
 .container-form{
     height:100%;
-    border:1px solid pink;
+    
 }
 
 form{
     width: 75%;
     height: 95%;
-    border:1px solid cyan;
     margin: auto;
 }
 
@@ -80,6 +79,7 @@ form{
 #FNdiv{
     margin-top: 2%;
 }
+
 .visitor_info, .logincredentials{
     display:grid;
     grid-template-columns: 1.5fr 2fr;
@@ -183,13 +183,7 @@ form{
 /* right side */
 /* right side */
 /* right side */
-footer{
-    width: 50%;
-    margin-left:50%;
-    font-size: small;
-    text-align: center;
-    border:1px solid black;
-}
+
 
 .formError{
     position:relative;
@@ -219,3 +213,148 @@ footer{
 /* media queries */
 /* media queries */
 /* media queries */
+
+/*Large Devices 992-1199*/ /* 992px and up*/
+@media screen and (max-width:1199px){
+    form{
+        width:87%;
+    }
+
+    .greetings{
+        margin: 12% auto 8%;
+    }
+    
+    .forToggle input{
+        margin-left: 11px;
+    }
+    
+    .notslashed-p, .slasheye-p,
+    .notslashed-cp, .slasheye-cp{
+        margin-left: -27px;
+    }
+
+    #passbar{
+        top:-16px;
+        z-index: -1;
+    }
+    
+    #registerbutton, .member{
+        width:30%;
+    }
+}
+
+
+/*Medium Devices, Tablet, 768-991*/
+@media screen and (max-width:991px){
+    .container-fluid{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+
+    .container-design{
+        display:none;
+    }
+
+    .member{
+        margin-bottom:5%;
+    }
+
+    form{
+        height:100%;
+        width: 55%;
+    }   
+
+    .greetings{
+        margin: 6% auto;
+    }
+
+    .forToggle input{
+        margin-left: 11.5px;
+    }
+
+    @media screen and (max-width:899px){
+        .forToggle input{
+            margin-left: 11.5px;
+        }
+
+        form{
+            width: 60%;
+        }
+    }
+
+}
+
+/*Small Devices 576px to 767px*/
+@media screen and (max-width:767px){
+    .container-fluid{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+
+    form{
+        width: 75%;
+    }  
+
+    @media screen and (max-width:600px){
+        form{
+            width: 85%;
+        } 
+
+        .forToggle input{
+            margin-left: 10px;
+        }
+    }
+}
+
+@media screen and (max-width:579px){
+    .container-fluid{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+
+    form{
+        width: 90%;
+    }   
+
+    .member{
+        margin-bottom:5%;
+    }
+
+    .greetings{
+        margin: 12% auto 8%;
+    }
+
+    .forToggle input{
+        margin-left: 12px;
+    }
+    
+    @media screen and (max-width:414px){
+        form{
+            width: 100%;
+        }
+        
+        .forToggle input{
+            margin-left: 9px;
+        }
+    }
+
+    @media screen and (max-width:320px){
+        .container-fluid{
+            display:grid;
+            grid-template-columns: 1fr;
+        }
+
+        form{
+            width: 100%;
+        }   
+
+        .forToggle input{
+            margin-left: 8.70px;
+        }
+        
+        .notslashed-p, .slasheye-p,
+        .notslashed-cp, .slasheye-cp{
+            margin-left: -27px;
+        }
+    }
+}

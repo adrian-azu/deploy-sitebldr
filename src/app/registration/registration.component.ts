@@ -101,6 +101,7 @@ export class RegistrationComponent implements OnInit {
     
     if(this.emptyFieldChecker() == true){
       this.invalidform = true;
+      return;
     }
     if (this.passwordchecker() == false){
       console.log("password checker is false");
