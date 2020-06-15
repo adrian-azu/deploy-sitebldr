@@ -39,7 +39,6 @@
                 <label for = "lastName">
                     Last Name
                 </label>
-                
                 <input type = "text" 
                 name = "lastName" 
                 formControlName = "lastName"
@@ -68,10 +67,8 @@
 
             <div class = "visitor_info">
                 <ng-template #rt let-r="result" let-t="term">
-                    <img [src]="'assets/Country Flags/' + r['flag']" class="mr-1" style="width: 15px">
                     <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
                 </ng-template>
-                
                 <label for="typeahead-template">
                     Country
                 </label>

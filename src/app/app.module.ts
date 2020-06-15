@@ -16,6 +16,7 @@ import { AdminaccountComponent } from './admin/adminaccount/adminaccount.compone
 import { ProjectmanageraccountComponent } from './projectmanager/projectmanageraccount/projectmanageraccount.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PasswordstrengthComponent } from './registration/passwordstrength/passwordstrength.component';
+import { EmailverificationComponent } from './registration/emailverification/emailverification.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PasswordstrengthComponent } from './registration/passwordstrength/passw
     AdminaccountComponent,
     ProjectmanageraccountComponent,
     RegistrationComponent,
-    PasswordstrengthComponent
+    PasswordstrengthComponent,
+    EmailverificationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, RequiredValidator } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import {Observable} from 'rxjs';
 import {debounceTime, map} from 'rxjs/operators';
+import { RegisterService } from './register.service';
 
 import { countryData } from './countryData';
 import * as $ from 'jquery';
@@ -104,15 +105,12 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     if (this.passwordchecker() == false){
-      console.log("password checker is false");
       return;
     }
     if (this.regiform.invalid){
-      console.log("form is invalid");
       return;
     }
     
-    console.log(this.passwordchecker());
     this.invalidform = false;
   }
 
