@@ -2,7 +2,7 @@
 require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
+//use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 ini_set("display_errors",1);
@@ -38,7 +38,6 @@ function sendmail($code, $email, $firstname, $lastname){
       $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
       if($mail->send()){
         echo 'Message has been sent';
-
         return true;
 
       }else{
