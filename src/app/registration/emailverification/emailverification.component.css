@@ -7,30 +7,29 @@
 }
 
 .bg{
-    border:1px solid red;
-    text-align: center;
-    margin:auto;
     height:100%;
+    margin:auto;
+    text-align: center;
     z-index: -1;
 }
 
 #verify_img{
-    top:45%;
-    position: relative;
-    width: 60%;
+    top: 45%;
+    width: 68%;
     height: 55%;
-    border:1px solid pink;
-
+    position: relative;
 }
 
 form{
-    padding:1%;
-    margin:0 auto;
+    top: -85%;
     width:27%;
     height:50%;
+    min-height: 295px;
+    max-height: 315px;
+    margin:0 auto;
+    padding:1%;
     border-radius:3.5%;
     position:relative;
-    top: -75%;
     text-align:center;
     background-color: #FDFDFD;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -85,12 +84,13 @@ form{
 
 #submitBtn{
     width:68%;
+    color: #FFF;
+    padding: 4px;
+    margin: 2px;
+    font-family: 'Roboto', 'Poppins', sans-serif;
+    font-weight: 500;
     background-color: #4284FB;
     border:1px solid #4284FB;
-    color: #FFF;
-    padding:4px;
-    margin:2px;
-    font-weight:500;
 }
 
 .resend a{
@@ -102,4 +102,138 @@ a:hover{
     color: #6600ff;
     text-decoration: underline;
     cursor: pointer;
+}
+
+/**** Media Queries *****/
+/**** Media Queries *****/
+/**** Media Queries *****/
+
+/*Large Devices 992-1199*/
+/* 992px and up*/
+@media screen and (max-width:1285px){
+    form{
+        width:30%;
+    }
+}
+
+@media screen and (max-width:1199px){
+    form{
+        width:32%;
+    }
+
+    @media screen and (max-width:1070px){
+        form{
+            width:35%;
+        }
+    }
+}
+
+/*Medium Devices, Tablet, 768-991*/
+@media screen and (max-width:991px){
+    form{
+        width:38%;
+    }
+    #verify_img{
+        top: 50%;
+        width: 100%;
+        height: 50%;
+        position: relative;
+    }
+    @media screen and (max-width:879px){
+        form{
+            width:45%;
+        }
+    }
+}
+
+/*Small Devices 576px to 767px*/
+@media screen and (max-width:767px){
+    form{
+        width:50%;
+    }
+    @media screen and (max-width:672px){
+        form{
+            width:60%;
+        }
+    }
+}
+
+@media screen and (max-width:575px){
+    form{
+        top:-90%;
+        width:70%;
+    }
+    .headerForm h2{
+        font-size: 25px;
+    }
+    
+    @media screen and (max-width:490px){
+        form{
+            width:90%;
+            height:40%;
+        }
+        .headerForm h2{
+            font-size: 25px;
+        }
+    }
+    @media screen and (max-width:320px){
+        form{
+            width:90%;
+            min-height:60%;
+        }
+        .headerForm h2{
+            font-size: 20px;
+        }
+
+        #verify_img{
+            top: 45%;
+            width: 100%;
+            height: 55%;
+            position: relative;
+        }
+
+        .headerForm h2{
+            font-size: 20px;
+        }
+
+        .spiel{
+            width:75%;
+            margin: auto auto 2.5%;
+        }
+        
+        .spiel p{
+            font-size: 15px;
+        }
+
+        .field input, #submitBtn{
+            width:75%;
+        }
+
+        @media screen and (max-width:240px){
+            form{
+                top:10%;
+                width:95%;
+                height:80%;
+            }
+            .bg{
+                display:none;
+            }
+            .headerForm h2{
+                font-size: 15px;
+            }
+            
+            .spiel p{
+                font-size: 14px;
+            }
+    
+            .field input, #submitBtn{
+                width:75%;
+                font-size: 13px;
+                
+            }
+        }
+    }
+
+    
+
 }
