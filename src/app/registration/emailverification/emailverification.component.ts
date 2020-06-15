@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'emailverification',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./emailverification.component.css']
 })
 export class EmailverificationComponent implements OnInit {
+  verifyForm: FormGroup;
+  
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.verifyForm = this.formBuilder.group({
+      verifyCode: ['']
+    })
   }
 
 }

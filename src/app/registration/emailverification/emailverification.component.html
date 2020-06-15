@@ -1,3 +1,31 @@
-<div class="container-fluid">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae, ex nam! Ipsam magnam suscipit minima sequi eius libero aperiam voluptatum voluptatibus, voluptate repellendus assumenda saepe, facere modi pariatur tenetur accusamus!
+<div class = "container-fluid">
+    <div class = "bg">
+        <img src = "assets/Images/verification.png" id = "verify_img">
+    </div>
+    
+    <form [formGroup] = "verifyForm">
+        <div class="headerForm">
+            <h2> Verify Email </h2>
+            <img src="assets/Images/verification_email.png">
+        </div>
+
+        <div class = "spiel">
+            <p>We have sent you a verification code. </p>
+            <p>Please check your email.</p>
+        </div>
+
+        <div class="field">
+            <input type="text" 
+            placeholder="Enter code">
+        </div>
+
+
+        <div class="submit">
+            <input type="submit" id="submitBtn">
+        </div>
+        
+        <div class="resend">
+            <a>Resend Code</a>
+        </div>
+    </form>
 </div>
