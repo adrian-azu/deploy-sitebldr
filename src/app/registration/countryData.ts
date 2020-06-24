@@ -1,4 +1,4 @@
-export const countryData:{name: string}[] = [
+export const countryData:{name?: string}[] = [
     {
         "name": "Afghanistan"
     },

@@ -50,17 +50,17 @@
             </div>
 
             <div class = "visitor_info">
-                <label for = "companyName">
+                <label for = "company">
                     Company Name
                 </label>
             
                 <input type = "text"
-                name = "companyName" 
-                formControlName = "companyName"
+                name = "company" 
+                formControlName = "company"
                 maxlength = "30">
             </div>
 
-            <div *ngIf = "regiform.controls.companyName.errors?.pattern" class="formError">
+            <div *ngIf = "regiform.controls.company.errors?.pattern" class="formError">
                 Please enter valid name.
             </div>
 
@@ -143,7 +143,7 @@
             </div>
 
             <div *ngIf = "!passwordchecker() && regiform.controls.confirmpass.touched" 
-                class = "formError" id="confirmpasserror">
+                class = "formError" id = "confirmpasserror">
                 Passwords must match.
             </div>
             

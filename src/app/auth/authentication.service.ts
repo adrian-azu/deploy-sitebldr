@@ -27,7 +27,7 @@ export class AuthenticationService {
     return this.http.post<any>(this.authServer, logindetails).pipe(
       map(data => {
         if(data && data.jwt){
-          console.log(data);
+          //console.log(data);
           localStorage.setItem('token', data.jwt);
           this.currentUserSubject.next(data);
           console.log(this.currentUserSubject);

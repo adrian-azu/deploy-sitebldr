@@ -1,4 +1,7 @@
 import { Component, Input, OnChanges, SimpleChange, OnInit } from '@angular/core';
+import { RegisterService } from '../register.service';
+
+
 @Component({
   selector: 'passwordstrength',
   templateUrl: './passwordstrength.component.html',

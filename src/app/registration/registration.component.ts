@@ -21,7 +21,7 @@ export class RegistrationComponent implements OnInit {
   invalidform;
 
   constructor(private formBuilder: FormBuilder,
-  private router: Router,) {}
+  private router: Router, private register: RegisterService) {}
 
   ngOnInit(): void {
     this.regiform = this.formBuilder.group({
@@ -36,19 +36,20 @@ export class RegistrationComponent implements OnInit {
           Validators.pattern('^[A-Za-z . \s_-]+$')]
       ],
 
-      companyName: ['',
+      company: ['',
         [ Validators.required,
           Validators.pattern('^[A-Za-z0-9 \s ._&-]+$') ]
       ],
-
-      country: ['', Validators.required],
 
       email : ['',
         [ Validators.required,
           Validators.email ]
       ],
+
+      
       password: ['', Validators.required],
-      confirmpass: ['', Validators.required]
+      confirmpass: ['', Validators.required],
+      country: ['', Validators.required]
     });
   
     $(document).ready(function(){
@@ -107,11 +108,22 @@ export class RegistrationComponent implements OnInit {
     if (this.passwordchecker() == false){
       return;
     }
+    if(this.checkStrength() == "weak"){
+      return;
+    }
     if (this.regiform.invalid){
       return;
     }
     
     this.invalidform = false;
+    
+    this.register.onRegister(accountdetails)
+    .subscribe(data =>{
+      if(data == true){
+        this.router.navigateByUrl('/verifyemail');
+      }
+    });
+    
   }
 
   backbtnClicked(){
@@ -122,7 +134,7 @@ export class RegistrationComponent implements OnInit {
     text$.pipe(
       debounceTime(200),
       map(term => term === '' ? []
-        : countryData.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+        : countryData.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 5))
     )
 
   formatter = (x: {name: string}) => x.name;
@@ -131,7 +143,7 @@ export class RegistrationComponent implements OnInit {
   emptyFieldChecker(){
     let fn = this.regiform.get('firstName').value;
     let ln = this.regiform.get('lastName').value;
-    let cn = this.regiform.get('companyName').value;
+    let cn = this.regiform.get('company').value;
     let cntry = this.regiform.get('country').value;
     let em = this.regiform.get('email').value;
     let ps = this.regiform.get('password').value;
@@ -143,7 +155,30 @@ export class RegistrationComponent implements OnInit {
     else
       return false;
   }
+  level:string;
+  checkStrength(){
+    let weaklvl = /^(?=.*?[a-z])/;
+    let fairlvl = /^(?=.*?[a-z])(?=.*?[0-9]).{8,16}$/;
+    let goodlvl = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,16}$/;
+    let stronglvl = /^(?=.*?[#?!@$%^&*-])(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,16}$/;
 
+    let password = this.regiform.get('password').value;
+    if(stronglvl.test(password)===true){
+      return this.level = "strong";
+    }
+    else if(goodlvl.test(password)===true){
+      return this.level = "good"
+    }
+
+    else if(fairlvl.test(password) === true){
+      return this.level="fair";
+    }
+    else if(weaklvl.test(password) === true){
+      return this.level="weak";
+    }
+    else
+      return this.level = null;
+  }
 
 }
   

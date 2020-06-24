@@ -3,7 +3,7 @@
         <img src = "assets/Images/verification.png" id = "verify_img">
     </div>
     
-    <form [formGroup] = "verifyForm">
+    <form [formGroup] = "verifyForm" (ngSubmit) = "onVerify(clientdetails.value)" #clientdetails = "ngForm">
         <div class="headerForm">
             <h2> Verify Email </h2>
             <img src="assets/Images/verification_email.png">
@@ -13,9 +13,12 @@
             <p>We have sent you a verification code.Please check your email. </p>
         </div>
 
+        
+
         <div class="field">
-            <input type="text" 
-            placeholder="Enter code">
+            <input type = "text" 
+            placeholder = "Enter code"
+            formControlName = "code">
         </div>
 
 

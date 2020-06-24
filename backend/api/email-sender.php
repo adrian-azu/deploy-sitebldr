@@ -13,7 +13,7 @@ function sendmail($code, $email, $firstname, $lastname){
 
   try {
       //Server settings
-      $mail->SMTPDebug = 4;                      // Enable verbose debug output
+      //$mail->SMTPDebug = 4;                      // Enable verbose debug output
       $mail->isSMTP();                                            // Send using SMTP
       $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
       $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
@@ -37,7 +37,7 @@ function sendmail($code, $email, $firstname, $lastname){
       $mail->Body    = 'Your verification code: <b>'. $code .'</b>';
       $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
       if($mail->send()){
-        echo 'Message has been sent';
+        ///echo 'Message has been sent';
         return true;
 
       }else{
