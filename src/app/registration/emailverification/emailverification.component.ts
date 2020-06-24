@@ -14,7 +14,10 @@ export class EmailverificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.verifyForm = this.formBuilder.group({
-      verifyCode: ['']
+      verifyCode: ['', 
+        [ Validators.required,
+          Validators.pattern('^[0-9]')]
+      ]
     })
   }
 
