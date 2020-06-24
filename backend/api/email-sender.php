@@ -66,6 +66,7 @@ function sendmail($code, $email, $firstname, $lastname){
 
         //Recipients
         $mail->setFrom($email);
+        $mail->addAddress($email);
         //$mail->addAddress('ellen@example.com');               // Name is optional
         $mail->addReplyTo($email);
 
@@ -79,9 +80,9 @@ function sendmail($code, $email, $firstname, $lastname){
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         if($mail->send()){
           return true;
-
         }else{
             return false;
+
         }
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
