@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+include_once('../vendor/autoload.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 //use PHPMailer\PHPMailer\SMTP;
@@ -13,7 +13,7 @@ function sendmail($code, $email, $firstname, $lastname){
 
   try {
       //Server settings
-      $mail->SMTPDebug = 4;                      // Enable verbose debug output
+      //$mail->SMTPDebug = 4;                      // Enable verbose debug output
       $mail->isSMTP();                                            // Send using SMTP
       $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
       $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
