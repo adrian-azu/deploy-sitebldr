@@ -65,7 +65,6 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
       $response = array(
         'email'=>$user->email,
         'id'=>$user_data['user_id'],
-        'message'=>'Email confirmed',
         'status'=>1
       );
       echo json_encode($response);

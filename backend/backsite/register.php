@@ -16,9 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $postdata = file_get_contents("php://input");
   if(isset($postdata) && !empty($postdata)){
     $request=json_decode($postdata, true);
-    //print_r($request);
     $user->email = $user->conn->real_escape_string(trim($request["email"]));
-    //echo $user->email;
     if(!empty($request)){
       if($user->verify_email()){
         $user->generate_code();
@@ -27,9 +25,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(sendmail($user->code, $user->email,$user->firstname, $user->lastname)){
           echo json_encode(array(
             'status'=> 1,
-            'message' => 'Email verification code has been sent!',
-            'firstName' => $user->firstname,
-            'lastName' => $user->lastname,
             'code' => $user->code,
           ));
           return http_response_code(200);
