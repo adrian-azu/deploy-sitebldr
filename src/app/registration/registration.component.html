@@ -20,6 +20,9 @@
             <div *ngIf = "submitted && invalidform" class="alert-danger">
                 All fields are required.
             </div>
+            <div *ngIf = "duplicateEmail" class="alert-danger">
+                Email already registered.
+            </div>
 
             <div class = "visitor_info" #FNdiv>
                 <label for = "firstName"> First Name </label>

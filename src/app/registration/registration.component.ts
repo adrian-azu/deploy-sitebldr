@@ -19,6 +19,7 @@ export class RegistrationComponent implements OnInit {
   submitted = false;
   country = countryData;
   invalidform;
+  duplicateEmail = false;
 
   constructor(private formBuilder: FormBuilder,
   private router: Router, private register: RegisterService) {}
@@ -122,7 +123,13 @@ export class RegistrationComponent implements OnInit {
       if(data == true){
         this.router.navigateByUrl('/verifyemail');
       }
-    });
+    },
+    error =>{
+      //console.log(error);
+      if(error.status === 500){
+        this.duplicateEmail = true;
+      }
+  });
     
   }
 

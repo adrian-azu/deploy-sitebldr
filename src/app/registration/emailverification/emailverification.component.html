@@ -16,7 +16,9 @@
         <div *ngIf = "!correctCode" class="alert-danger">
             Invalid code.
         </div>
-
+        <div *ngIf = "!duplicateEmail" class="alert-danger">
+            Email already registered.
+        </div>
         
 
         <div class="field">

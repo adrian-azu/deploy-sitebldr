@@ -10,7 +10,8 @@ import { RegisterService } from '../register.service';
 export class EmailverificationComponent implements OnInit {
   verifyForm: FormGroup;
   correctCode = true;
-  
+  duplicateEmail = false;
+
   constructor(private formBuilder: FormBuilder,
     private register: RegisterService) { }
 
@@ -23,8 +24,7 @@ export class EmailverificationComponent implements OnInit {
     })
 
     this.register.tempGetter();
-    console.log(this.register.codeGetter())
-    //console.log (this.register.currentVisitorValue());
+    //console.log(this.register.codeGetter())
   }
 
   onVerify(clientdetails){
@@ -41,6 +41,7 @@ export class EmailverificationComponent implements OnInit {
         });
       
       console.log("iroute sa client!");
+      //console.log.removeItem('temp');
       //localStorage.removeItem('code');
     }
     else
@@ -53,9 +54,13 @@ export class EmailverificationComponent implements OnInit {
     this.correctCode = true;
     this.register.resendingVisitor()
       .subscribe(data =>{
-        console.log("resending results", data);
+        //console.log("resending results", data);
+      },
+      error =>{
+          if(error.status === 500){
+            this. duplicateEmail = true;
+          }
       })
-    console.log("i am resending");
   }
 
 }
