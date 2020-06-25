@@ -19,14 +19,13 @@ include_once("../api/database.php");
      $postdata = file_get_contents("php://input");
 
      if(isset($postdata) && !empty($postdata)){
-
-      $request=json_decode($postdata);
-      $user->firstname= $user->conn->real_escape_string(trim($request->firstName));
-      $user->lastname= $user->conn->real_escape_string(trim($request->lastName));
-      $user->company= $user->conn->real_escape_string(trim($request->company));
-      $user->country= $user->conn->real_escape_string(trim($request->country));
-      $user->email= $user->conn->real_escape_string(trim($request->email));
-      $user->password= $user->conn->real_escape_string(trim($request->password));
+      $request=json_decode($postdata, true);
+      $user->firstname= $user->conn->real_escape_string(trim($request["firstName"]));
+      $user->lastname= $user->conn->real_escape_string(trim($request["lastName"]));
+      $user->company= $user->conn->real_escape_string(trim($request["company"]));
+      $user->country= $user->conn->real_escape_string(trim($request["country"]["name"]));
+      $user->email= $user->conn->real_escape_string(trim($request["email"]));
+      $user->password= $user->conn->real_escape_string(trim($request["password"]));
        if($user->register_account()){
          echo json_encode(array(
            "status" =>1,
