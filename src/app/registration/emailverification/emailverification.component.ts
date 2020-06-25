@@ -9,6 +9,7 @@ import { RegisterService } from '../register.service';
 })
 export class EmailverificationComponent implements OnInit {
   verifyForm: FormGroup;
+  correctCode = true;
   
   constructor(private formBuilder: FormBuilder,
     private register: RegisterService) { }
@@ -22,16 +23,28 @@ export class EmailverificationComponent implements OnInit {
     })
 
     this.register.tempGetter();
+    console.log(this.register.codeGetter())
     //console.log (this.register.currentVisitorValue());
   }
 
   onVerify(clientdetails){
-    let client = this.register.tempGetter();
+    
+    let client = this.register.codeGetter();
     let enteredCode = this.verifyForm.get('code').value;
 
-    if(client.code === enteredCode){
+    if(client === enteredCode){
+      this.correctCode = true;
+      
+      this.register.finallyClient()
+        .subscribe(data =>{
+          console.log(data);
+        });
+      
       console.log("iroute sa client!");
+      //localStorage.removeItem('code');
     }
+    else
+      this.correctCode = false;
   }
 
 }

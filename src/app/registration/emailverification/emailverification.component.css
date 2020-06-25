@@ -104,6 +104,20 @@ a:hover{
     cursor: pointer;
 }
 
+.alert-danger{
+    position:relative;
+    top:-7px;
+    margin:auto;
+    
+    text-align:center;
+    width:68%;
+    font-size: small;
+}
+
+
+
+
+
 /**** Media Queries *****/
 /**** Media Queries *****/
 /**** Media Queries *****/
@@ -170,7 +184,8 @@ a:hover{
     @media screen and (max-width:490px){
         form{
             width:90%;
-            height:40%;
+            height:45%;
+            margin-bottom:5px;
         }
         .headerForm h2{
             font-size: 25px;
@@ -213,7 +228,7 @@ a:hover{
             form{
                 top:10%;
                 width:95%;
-                height:80%;
+                height:83%;
             }
             .bg{
                 display:none;

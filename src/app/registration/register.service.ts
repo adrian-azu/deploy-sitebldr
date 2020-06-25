@@ -16,19 +16,17 @@ export class RegisterService {
 
 
   constructor(private http: HttpClient) { 
-    this.currentVisitorSubject = new BehaviorSubject<any>(localStorage.getItem('temp'));
-    this.currentVisitor = this.currentVisitorSubject.asObservable();
+    //this.currentVisitorSubject = new BehaviorSubject<any>(localStorage.getItem('code'));
+    //this.currentVisitor = this.currentVisitorSubject.asObservable();
   }
 
   onRegister(accountdetails){
     return this.http.post<any>(this.regiServer, accountdetails).pipe(
       map(result =>{
-        console.log(result);
+        console.log('onregister: ', accountdetails);
         if(result && result.code){
-          this.currentVisitorSubject.next(result);
-          localStorage.setItem('temp', JSON.stringify(result));
-          //console.log(this.currentVisitorSubject.value , 'behaviorsubject');
-          //console.log(this.currentVisitor);
+          localStorage.setItem('code', result.code);
+          localStorage.setItem('temp', JSON.stringify(accountdetails));
           return true;
         }
         else
@@ -37,14 +35,20 @@ export class RegisterService {
     )
   }
 
+  finallyClient(){
+    let x = this.tempGetter();
+    return this.http.post<any>(this.verifyServer, x);
+  }
+
   tempGetter(){
     let x = JSON.parse(localStorage.getItem('temp'));
-    console.log(x, 'verification');
+    console.log(x, "isesend kong data sa verification");
     return x;
   }
 
-  public get currentVisitorValue(){
-    return this.currentVisitor;
+  codeGetter(){
+    let x = localStorage.getItem('code');
+    return x;
   }
 
   

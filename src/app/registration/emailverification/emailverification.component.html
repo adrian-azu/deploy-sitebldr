@@ -13,6 +13,10 @@
             <p>We have sent you a verification code.Please check your email. </p>
         </div>
 
+        <div *ngIf = "!correctCode" class="alert-danger">
+            Invalid code.
+        </div>
+
         
 
         <div class="field">

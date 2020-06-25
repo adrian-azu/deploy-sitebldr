@@ -28,6 +28,14 @@ const routes: Routes = [
     }
   },
   {
+    path: 'Client/:id',
+    component: ClientaccountComponent,
+    canActivate: [AuthguardGuard],
+    data : {
+      expectedRole: 'Client'
+    }
+  },
+  {
     path: 'Admin',
     component: AdminaccountComponent,
     canActivate: [AuthguardGuard],
