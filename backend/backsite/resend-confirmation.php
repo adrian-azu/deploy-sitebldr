@@ -19,7 +19,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(sendmail($user->code, $user->email, $user->firstname, $user->lastname)){
       echo json_encode(array(
         'status'=> 1,
-        'message' => 'New email verification code has been sent!',
         'code' => $user->code
       ));
       return http_response_code(200);

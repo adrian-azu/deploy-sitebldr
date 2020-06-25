@@ -1,9 +1,9 @@
 <?php
 
 
-//include_once('../api/register.php');
 include_once("../api/user.php");
 include_once("../api/database.php");
+
 /**
  *
  */
@@ -30,25 +30,16 @@ include_once("../api/database.php");
        if($user->register_account()){
          echo json_encode(array(
            "status" =>1,
-           "message" => "Register Complete"
          ));
-         if (!isset($_SESSION)) {
-             session_start();
-         }
-         $_SESSION['uid']=$user->uid;
          return http_response_code(200);
          unset($postdata);
        }else{
          echo json_encode(array(
          "status" =>0,
-         "message" => "Registration Fail"
        ));
        return http_response_code(503);
    }
  }
 }
-
-
-
-
+s
  ?>

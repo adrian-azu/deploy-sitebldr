@@ -16,29 +16,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $postdata = file_get_contents("php://input");
   if(isset($postdata) && !empty($postdata)){
     $request=json_decode($postdata, true);
-    //print_r($request);
     $user->email = $user->conn->real_escape_string(trim($request["email"]));
-    //echo $user->email;
     if(!empty($request)){
       if($user->verify_email()){
         $user->generate_code();
         $user->firstname= $user->conn->real_escape_string(trim($request["firstName"]));
         $user->lastname= $user->conn->real_escape_string(trim($request["lastName"]));
         if(sendmail($user->code, $user->email,$user->firstname, $user->lastname)){
-          $user->company= $user->conn->real_escape_string(trim($request["company"]));
-          //$user->country= $user->conn->real_escape_string(trim($request->country));
-          $user->country=$user->conn->real_escape_string(trim($request["country"]["name"]));
-          //print_r($user->country);
-          $user->password= $user->conn->real_escape_string(trim($request["password"]));
           echo json_encode(array(
             'status'=> 1,
-            'message' => 'Email verification code has been sent!',
-            'firstName' => $user->firstname,
-            'lastName' => $user->lastname,
-            'company' => $user->company,
-            'country' => $user->country,
             'code' => $user->code,
-            'email' => $user->email
           ));
           return http_response_code(200);
           unset($postdata);
