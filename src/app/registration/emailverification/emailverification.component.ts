@@ -47,4 +47,15 @@ export class EmailverificationComponent implements OnInit {
       this.correctCode = false;
   }
 
+
+  resending(e){
+    e.preventDefault();
+    this.correctCode = true;
+    this.register.resendingVisitor()
+      .subscribe(data =>{
+        console.log("resending results", data);
+      })
+    console.log("i am resending");
+  }
+
 }
