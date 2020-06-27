@@ -15,15 +15,12 @@ export class RegisterService {
   public currentVisitor: Observable<any>;
 
 
-  constructor(private http: HttpClient) { 
-    //this.currentVisitorSubject = new BehaviorSubject<any>(localStorage.getItem('code'));
-    //this.currentVisitor = this.currentVisitorSubject.asObservable();
-  }
+  constructor(private http: HttpClient) { }
 
   onRegister(accountdetails){
     return this.http.post<any>(this.regiServer, accountdetails).pipe(
       map(result =>{
-        //console.log('onregister: ', accountdetails);
+
         if(result && result.code){
           localStorage.setItem('code', result.code);
           localStorage.setItem('temp', JSON.stringify(accountdetails));
@@ -54,7 +51,7 @@ export class RegisterService {
     let x = this.tempGetter();
     return this.http.post<any>(this.regiServer, x).pipe(
       map(result =>{
-        //console.log('resending: ', x);
+        
         if(result && result.code){
           localStorage.setItem('code', result.code);
           localStorage.setItem('temp', JSON.stringify(x));

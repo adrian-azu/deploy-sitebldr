@@ -49,7 +49,7 @@ export class EmailverificationComponent implements OnInit {
       
       this.register.finallyClient()
         .subscribe(data =>{
-          console.log(data);
+          //console.log(data);
         });
     }
   }
