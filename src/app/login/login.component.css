@@ -38,33 +38,25 @@ body{
 }
 
 
-
 .container-form{
     width: 100%;
 }
 
 form{
-    width: 80%;
-    height: 82%;
-    margin: auto;
+    width: 85%;
+    height: 70%;
+    margin: 10% auto 0;
     text-align: center;
 }
 
-.greetings-top h2{
-    padding: 0px;
-    margin-top: 20%;
-    font-size: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
 #SBBB{
+    margin-top: 8%;
     height: 55px;
     margin-bottom:25px;
 }
 
 #email, #password{
-    width: 53%;
+    width: 52%;
     margin: 7px;
     padding: 5px 5px 5px 20px;
     font-size:15px;
@@ -72,10 +64,6 @@ form{
     background-color: #ededed;
     border: 2px solid #e5e5e5;
     border-radius: 15px;
-}
-
-.password-div{
-    border:1px solid pink;
 }
 
 #password{
@@ -132,15 +120,23 @@ form{
 }
 
 .register{
+    color:#00B0EA;
     font-size: small;
     text-decoration: underline;
 }
 
+.registerDiv{
+    padding:0;
+    width:32%;
+    margin:auto;
+    margin-bottom:15px;
+}
+
 .alert-danger{
-    margin:5px auto;
+    margin:0 auto;
     padding:5px 0;
-    width:50%;
-    font-size:14px;
+    width:51%;
+    font-size:13px;
     text-align: center;
     border-radius:5px;
 }
@@ -153,5 +149,184 @@ footer{
 }
 
 
+/* media queries */
+/* media queries */
+/* media queries */
+
+/*Large Devices 992-1199*/ /* 992px and up*/
+@media screen and (max-width:1024px){
+    #email, #password, .bottom{
+        width: 60%;
+    }
+    #pressplay{
+        margin-top:7%;
+        width: 85%;
+    }
+    form{
+        width: 85%;
+        height: 70%;
+        margin: 15% auto 0;
+    }
+    
+}
+
+
+/*Medium Devices, Tablet, 768-991*/
+@media screen and (max-width:991px){
+    #pressplay{
+        width: 93%;
+        margin:8% auto;
+    }
+
+    
+    form{
+        margin: 15% auto 10%;
+        width: 81%;
+        height: 60%;
+    }
+
+    footer{
+        display:none;
+    }
+
+    #SBBB{
+        margin-top:5%;
+        height: 45px;
+        margin-bottom:25px;
+    }
+    
+    #email, #password, .bottom{
+        width: 75%;
+    }
+
+    .signinbtn{
+        width: 45%;
+    }
+
+    .registerDiv{
+        width: 45%;
+        margin:auto;
+        padding:0;
+    }
+
+    @media screen and (max-width:800px){
+        form{
+            margin: 10% auto 10%;
+            width: 83%;
+            height: 60%;
+        }
+
+        #email, #password, .bottom{
+            width: 80%;
+        }
+
+        .signinbtn,.registerDiv{
+            width: 57%;
+        }
+    }
+}
+
+/*Small Devices 576px to 767px*/
+@media screen and (max-width:767px){
+    #pressplay{
+        width: 95%;
+        margin:1% auto;
+    }
+    
+    form{
+        margin: 5% auto 2%;
+        width: 85%;
+        height: 60%;
+    }
+
+    #SBBB{
+        margin-top:5%;
+        height: 45px;
+        margin-bottom:20px;
+    }
+    
+    #email, #password, .bottom{
+        width: 75%;
+    }
+    .alert-danger{
+        width:73%;
+        font-size:smaller;
+    }
+
+    .signinbtn, .registerDiv{
+        width: 57%;
+    }
+
+    @media screen and (max-width:678px){
+        .container-fluid{
+            display:grid;
+            grid-template-columns: 1fr;
+        }
+        .container-design{
+            display:none;
+        }
+
+        footer{
+            display:none;
+        }
+        
+        form{
+            margin: 12% auto 10%;
+            width: 70%;
+            height: 75%;
+        }
+        
+        #email, #password, .bottom{
+            width: 77%;
+        }
+
+        .alert-danger{
+            width:75%;
+        }
+
+        #SBBB{
+            margin-top:10%;
+            height: 45px;
+            margin-bottom:25px;
+        }
+
+        @media screen and (max-width:320px){
+            form{
+                margin: 5% auto 10%;
+                width: 100%;
+                height: 75%;
+            }
+
+        }
+
+        @media screen and (max-width:240px){
+            #SBBB{
+                margin-top:7%;
+                height: 40px;
+                margin-bottom:15px;
+            }
+
+            form{
+                margin:auto;
+                width: 100%;
+            } 
+            
+            #email, #password, .bottom{
+                width: 85%;
+                font-size:14px;
+            }
+
+            .bottom{
+                font-size:12px;
+            }
+
+            .registerDiv{
+                margin-bottom:30px;
+            }
+        }
+    }
+
+
+}
 
 

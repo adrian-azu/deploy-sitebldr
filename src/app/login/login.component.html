@@ -9,16 +9,15 @@
             <img src="assets\Images\login_pressplay.png" id = "pressplay">
         </div>
     </div>
+    
     <div class = "container-form">
         <form [formGroup] = "loginform" (ngSubmit) = "onSubmit(logindetails.value)" #logindetails="ngForm">
             <div class = "greetings">
-                <div class = "greetings-top">
-                    <h2> Welcome back! </h2>
-                </div>
                 <div class = "greetings-bottom">
                     <img src="assets/Images/SBBB.png" alt="" id = "SBBB">
                 </div>
             </div>
+            
 
             <div *ngIf = "submitted && invalidLogin"  class = "alert-danger">  
                 Your username or password is invalid.
@@ -71,7 +70,7 @@
                 <input type="submit" class="signinbtn" value="Log in">
             </div>
 
-            <div>
+            <div class="registerDiv">
                 <a routerLink="/Registration" class = "register">not a member? register here</a>
             </div>
 
