@@ -13,10 +13,10 @@
             <p>We have sent you a verification code.Please check your email. </p>
         </div>
 
-        <div *ngIf = "!correctCode" class="alert-danger">
+        <div *ngIf = "submitted && !correctCode" class="alert-danger">
             Invalid code.
         </div>
-        <div *ngIf = "!duplicateEmail" class="alert-danger">
+        <div *ngIf = "submitted && duplicateEmail" class="alert-danger">
             Email already registered.
         </div>
         
@@ -29,7 +29,7 @@
 
 
         <div class="submit">
-            <input type="submit" id="submitBtn">
+            <input type="submit" id="submitBtn" (click)="open(content)">
         </div>
         
         <div class="resend">
@@ -37,3 +37,26 @@
         </div>
     </form>
 </div>
+
+<!-- Modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-body" id="mamamo">
+        <div class="modalUpper">
+            <h3 id="vsuccess">Verfication Successful!</h3>
+            <img src="assets/Images/vs.png" alt="verification successful">
+        </div>
+        
+        <div class="modalLower">
+            <p>Congratulations, you have sucessfully verified your email. You may now proceed logging in.</p>
+        </div>
+
+    </div> 
+    
+    
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" id="loginbtn" (click)="Onproceed()">
+            Log in
+        </button>
+    </div>
+
+</ng-template>

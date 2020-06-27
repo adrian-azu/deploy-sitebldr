@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterService } from '../register.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'emailverification',
@@ -9,11 +11,19 @@ import { RegisterService } from '../register.service';
 })
 export class EmailverificationComponent implements OnInit {
   verifyForm: FormGroup;
+  submitted=false;
   correctCode = true;
   duplicateEmail = false;
 
   constructor(private formBuilder: FormBuilder,
-    private register: RegisterService) { }
+    private router: Router,
+    private register: RegisterService,
+    config: NgbModalConfig, 
+    private modalService: NgbModal) { 
+    
+      config.backdrop = 'static';
+      config.keyboard = false;
+    }
 
   ngOnInit(): void {
     this.verifyForm = this.formBuilder.group({
@@ -22,15 +32,17 @@ export class EmailverificationComponent implements OnInit {
           Validators.pattern('^[0-9]')]
       ]
     })
-
-    this.register.tempGetter();
-    //console.log(this.register.codeGetter())
   }
 
   onVerify(clientdetails){
-    
     let client = this.register.codeGetter();
     let enteredCode = this.verifyForm.get('code').value;
+
+    this.submitted = true;
+    if(client !== enteredCode){
+      this.correctCode = false;
+      return;
+    }
 
     if(client === enteredCode){
       this.correctCode = true;
@@ -39,13 +51,7 @@ export class EmailverificationComponent implements OnInit {
         .subscribe(data =>{
           console.log(data);
         });
-      
-      console.log("iroute sa client!");
-      //console.log.removeItem('temp');
-      //localStorage.removeItem('code');
     }
-    else
-      this.correctCode = false;
   }
 
 
@@ -59,8 +65,29 @@ export class EmailverificationComponent implements OnInit {
       error =>{
           if(error.status === 500){
             this. duplicateEmail = true;
+            localStorage.removeItem('temp');
+            localStorage.removeItem('code');
           }
       })
   }
+
+  open(content) {
+    this.submitted = true;
+    let client = this.register.codeGetter();
+    let enteredCode = this.verifyForm.get('code').value;
+    if(client === enteredCode){
+      this.correctCode = true;
+      this.modalService.open(content);
+    }
+  }
+
+  Onproceed(){
+    this.router.navigateByUrl('/login');
+    this.modalService.dismissAll();
+    //localStorage.removeItem('temp');
+    //localStorage.removeItem('code');
+  }
+
+  
 
 }

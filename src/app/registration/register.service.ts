@@ -23,7 +23,7 @@ export class RegisterService {
   onRegister(accountdetails){
     return this.http.post<any>(this.regiServer, accountdetails).pipe(
       map(result =>{
-        console.log('onregister: ', accountdetails);
+        //console.log('onregister: ', accountdetails);
         if(result && result.code){
           localStorage.setItem('code', result.code);
           localStorage.setItem('temp', JSON.stringify(accountdetails));
@@ -37,7 +37,6 @@ export class RegisterService {
 
   tempGetter(){
     let x = JSON.parse(localStorage.getItem('temp'));
-    console.log(x, "isesend kong data sa verification");
     return x;
   }
 
@@ -55,11 +54,10 @@ export class RegisterService {
     let x = this.tempGetter();
     return this.http.post<any>(this.regiServer, x).pipe(
       map(result =>{
-        console.log('resending: ', x);
+        //console.log('resending: ', x);
         if(result && result.code){
-          console.log("for resending", result.code)
           localStorage.setItem('code', result.code);
-          localStorage.setItem('temp', JSON.stringify(x)); //kahit hindi na
+          localStorage.setItem('temp', JSON.stringify(x));
           return true;
         }
         else
