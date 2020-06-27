@@ -84,8 +84,8 @@ export class EmailverificationComponent implements OnInit {
   Onproceed(){
     this.router.navigateByUrl('/login');
     this.modalService.dismissAll();
-    //localStorage.removeItem('temp');
-    //localStorage.removeItem('code');
+    localStorage.removeItem('temp');
+    localStorage.removeItem('code');
   }
 
   

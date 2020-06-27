@@ -31,6 +31,7 @@ export class PasswordstrengthComponent implements OnInit, OnChanges {
   }
   
   checkStrength(){
+    let weaklvl2 = /^(?=.*?[A-Z])/;
     let weaklvl = /^(?=.*?[a-z])/;
     let fairlvl = /^(?=.*?[a-z])(?=.*?[0-9]).{8,16}$/;
     let goodlvl = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,16}$/;
@@ -48,6 +49,9 @@ export class PasswordstrengthComponent implements OnInit, OnChanges {
       return this.level="fair";
     }
     else if(weaklvl.test(password) === true){
+      return this.level="weak";
+    }
+    else if(weaklvl2.test(password) === true){
       return this.level="weak";
     }
     else

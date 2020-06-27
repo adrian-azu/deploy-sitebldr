@@ -164,6 +164,7 @@ export class RegistrationComponent implements OnInit {
   }
   level:string;
   checkStrength(){
+    let weaklvl2 = /^(?=.*?[A-Z])/;
     let weaklvl = /^(?=.*?[a-z])/;
     let fairlvl = /^(?=.*?[a-z])(?=.*?[0-9]).{8,16}$/;
     let goodlvl = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{8,16}$/;
@@ -181,6 +182,9 @@ export class RegistrationComponent implements OnInit {
       return this.level="fair";
     }
     else if(weaklvl.test(password) === true){
+      return this.level="weak";
+    }
+    else if(weaklvl2.test(password) === true){
       return this.level="weak";
     }
     else
