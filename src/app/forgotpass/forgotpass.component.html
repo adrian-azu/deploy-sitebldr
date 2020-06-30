@@ -1,1 +1,33 @@
-<p>forgotpass works!</p>
+<div class="container-fluid">
+    <div class = "bg">
+        <img src = "assets/Images/verification.png" id = "verify_img">
+    </div>
+
+    <div class="formDiv">
+        <form [formGroup]="passwordForm" (ngSubmit) = "onSubmit(clientdetails.value)" #clientdetails = "ngForm">
+            <div class="headerForm">
+                <h2> Forgot Password </h2>
+                <img id="key" src="assets/Images/key2.png">
+            </div>
+            <div class = "spiel">
+                We will send you instruction on how to reset your password through email.
+            </div>
+
+            <div *ngIf="submitted" class="alert-danger">
+                Invalid code.
+            </div>
+
+            <div class="field">
+                <input type = "text" 
+                placeholder = "Enter email address"
+                formControlName = "email">
+            </div>
+    
+            <div class="submit">
+                <input type="submit" id="submitBtn">
+            </div>
+        </form>
+    </div>
+
+
+</div>

@@ -119,6 +119,11 @@ form{
     color:#bfbfbf;
 }
 
+
+.bottom a:hover{
+    color:#00B0EA;
+}
+
 .rememberme{
     font-size: small;
     font-weight: 500;
@@ -137,7 +142,7 @@ form{
 }
 
 .register{
-    color:#00B0EA;
+    color:#bfbfbf;
     font-size: small;
     text-decoration: underline;
 }
@@ -147,6 +152,10 @@ form{
     width:32%;
     margin:auto;
     margin-bottom:15px;
+}
+
+.registerDiv a:hover{
+    color:#00B0EA;
 }
 
 .alert-danger{

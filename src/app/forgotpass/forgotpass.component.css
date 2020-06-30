@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+
+.container-fluid{
+    z-index: -2;
+    font-family: 'Source Sans Pro', sans-serif;
+    height: 100vh;
+    background: linear-gradient(167.49deg, #A32CDF 17.69%, rgba(255, 37, 37, 0) 106.66%);
+}
+
+.bg{
+    z-index: -1;
+    height:100%;
+    margin:auto;
+    text-align: center;
+}
+
+#verify_img{
+    top: 47%;
+    width: 63%;
+    height: 53%;
+    position: relative;
+}
+
+.formDiv{
+    border:1px solid cyan;
+    top: -87%;
+    position: relative;
+    height:55%;
+    min-height:342px;
+    min-width:387px;
+    max-height:350px;
+}
+
+form{
+    margin:auto;
+    padding:3%;
+    border-radius:20px;
+    text-align:center;
+    background-color: #FDFDFD;
+    width:29%;
+    height:100%;
+    max-width:400px;
+    font-family: 'Source Sans Pro', sans-serif;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h2{
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 1px;
+    font-weight:600;
+}
+
+#key{
+    height:45px;
+    width: 45px;
+}
+
+.spiel{
+    font-size:14px;
+    width:94%;
+    margin:3% auto 5%;
+}
+
+.field input{
+    font-size:16px;
+    width:94%;
+    padding:6px 17px;
+    border-radius:6px;
+    font-weight: 300;
+    border: 1px solid #656565;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 2% auto 3%;
+}
+
+.field input::placeholder{
+    font-size:14px;
+}
+
+#submitBtn{
+    color: #ffffff;
+    background: #4284FB;
+    padding:2%;
+    width:94%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border:#4284FB;
+}
+
+.alert-danger{
+    font-size:small;
+    position:relative;
+    top:-7px;
+    width:94%;
+    margin:auto;
+}
+
+
