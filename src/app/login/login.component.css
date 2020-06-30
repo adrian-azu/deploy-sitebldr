@@ -7,7 +7,7 @@ body{
     margin: 0px;
     padding: 0px;
     width: 100%;
-    height: 94vh;
+    height: 100vh;
     display:grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -20,44 +20,60 @@ body{
 }
 
 .backbtn{
-    margin: 20px 0px 40px 20px;
+
+    margin: 5% 0% 0% 4%;
+    height: 5%;
 }
 
 .logindivision{
     justify-content: center;
     text-align: center;
+    border:1px solid transparent;
+    height: 89%;
+}
+
+.pressplayDiv{
+    margin:8% auto 0; 
+    height:75%;
 }
 
 #pressplay{
-    width: 85%;
+    height:98%;
+    max-width:90%;
 }
 
 .container-design{
-    height: 100vh;
+    height: 100%;
     background-color: #e5e5e5;
 }
 
-
 .container-form{
     width: 100%;
+    height: 100%;
+    margin:auto;
+}
+
+.formDiv{
+    height:80%;
+    margin: 12% 0 0;
 }
 
 form{
-    width: 85%;
-    height: 70%;
-    margin: 10% auto 0;
+    width: 84%;
+    height: 100%;
+    margin:auto;
     text-align: center;
 }
 
 #SBBB{
-    margin-top: 8%;
+    margin-top: 12%;
+    margin-bottom:30px;
     height: 55px;
-    margin-bottom:25px;
 }
 
 #email, #password{
     width: 52%;
-    margin: 7px;
+    margin: 1.25%;
     padding: 5px 5px 5px 20px;
     font-size:15px;
     color:#333333;
@@ -98,6 +114,7 @@ form{
 }
 
 .forgotpass{
+    cursor: pointer;
     font-size: small;
     color:#bfbfbf;
 }
@@ -146,6 +163,7 @@ footer{
     margin-left:50%;
     font-size: small;
     text-align: center;
+    border:1px solid black;
 }
 
 
@@ -272,7 +290,7 @@ footer{
         
         form{
             margin: 12% auto 10%;
-            width: 70%;
+            width: 80%;
             height: 75%;
         }
         

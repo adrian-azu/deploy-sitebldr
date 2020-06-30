@@ -17,6 +17,7 @@ import { ProjectmanageraccountComponent } from './projectmanager/projectmanagera
 import { RegistrationComponent } from './registration/registration.component';
 import { PasswordstrengthComponent } from './registration/passwordstrength/passwordstrength.component';
 import { EmailverificationComponent } from './registration/emailverification/emailverification.component';
+import { ForgotpassComponent } from './forgotpass/forgotpass.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EmailverificationComponent } from './registration/emailverification/ema
     ProjectmanageraccountComponent,
     RegistrationComponent,
     PasswordstrengthComponent,
-    EmailverificationComponent
+    EmailverificationComponent,
+    ForgotpassComponent
   ],
   imports: [
     BrowserModule,
