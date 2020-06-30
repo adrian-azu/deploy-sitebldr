@@ -15,8 +15,7 @@ echo "<br>";
 
 echo $uid=substr($generated_id,1);
 $user_id=12;
-$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."confirm.php?id=" . $user_id;
-echo $actual_link;
 
-
+    $rand = substr(md5(microtime()),rand(0,26),5);
+    echo "<br>". strtoupper($rand);
 ?>

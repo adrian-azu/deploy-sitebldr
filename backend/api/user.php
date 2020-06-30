@@ -84,16 +84,36 @@ ini_set('display_errors', 1);
     }
   }
   function generate_code(){
-      $generated_id = uniqid (rand (),true);
-      $position=strpos($generated_id,".")+1;
-      $this->code=substr($generated_id,$position);
+      $rand = substr(md5(microtime()),rand(0,26),5);
+      $this->code=strtoupper($rand);
   }
-
   function generate_id(){
     $generated_id = uniqid (rand (),true);
     $position=strpos($generated_id,".")+6;
     $this->uid=substr($generated_id,$position);
     $this->uid= "SBR".$this->uid. date("md");
+  }
+  function update_password(){
+    $sql="UPDATE user_info SET password = ? WHERE user_id= ? LIMIT 1";
+    $stmt=$this->conn->prepare($sql);
+    $this->password=password_hash($this->password, PASSWORD_DEFAULT);
+    $stmt->bind_param('ss',$this->password, $this->uid);
+    if($stmt->execute()){
+        return true;
+      }else{
+        return false;
+    }
+  }
+  function verify_password(){
+    $sql="SELECT password FROM user_info WHERE user_id= ? LIMIT 1";
+    $stmt=$this->conn->prepare($sql);
+    $stmt->bind_param("s", $this->uid);
+    if($stmt->execute()){
+      $data = $stmt->get_result();
+      return $data->fetch_assoc();
+      $stmt->fetch();
+    }
+      return array();
   }
 }
 
