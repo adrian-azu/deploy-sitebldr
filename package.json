@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/architect": "^0.800.0-rc.0",
     "@angular/animations": "~9.1.1",
     "@angular/common": "~9.1.1",
     "@angular/compiler": "~9.1.1",
@@ -22,9 +23,11 @@
     "@angular/router": "~9.1.1",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@popperjs/core": "^2.4.3",
     "bootstrap": "^4.4.0",
     "jquery": "^3.5.1",
     "jwt-decode": "^2.2.0",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
